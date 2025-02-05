@@ -31,14 +31,14 @@ parseCSV csvData =
 
 
 -- p norm (note if the power exponation is not of the form 2^n, the code is very slow)
--- powerOfExponation :: Int
--- powerOfExponation = 8
+powerOfExponation :: Int
+powerOfExponation = 2
 
--- dist :: [Int] -> [Int] -> Int
--- dist [] [] = 0
--- dist [] _ = error "Both lists must have same length"
--- dist _ [] = error "Both lists must have same length"
--- dist (x:xs) (y:ys) = (x-y)^powerOfExponation + dist xs ys
+dist :: [Int] -> [Int] -> Int
+dist [] [] = 0
+dist [] _ = error "Both lists must have same length"
+dist _ [] = error "Both lists must have same length"
+dist (x:xs) (y:ys) = (x-y)^powerOfExponation + dist xs ys
 
 
 -- Hinge Distence (dot product similarity)
