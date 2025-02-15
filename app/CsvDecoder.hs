@@ -46,7 +46,7 @@ dist (x:xs) (y:ys) = (x-y)^powerOfExponation + dist xs ys
 -- dist [] [] = 0
 -- dist [] _ = error "Both lists must have same length"
 -- dist _ [] = error "Both lists must have same length"
--- dist (x:xs) (y:ys) = (-1) * floor ((fromIntegral x-5)*(fromIntegral y-5)) + dist xs ys
+-- dist (x:xs) (y:ys) = (-1) * floor ((fromIntegral x-5.5)*(fromIntegral y-5.5)) + dist xs ys
 
 -- Infinite Norm
 -- dist :: [Int] -> [Int] -> Int
@@ -62,7 +62,7 @@ dist (x:xs) (y:ys) = (x-y)^powerOfExponation + dist xs ys
 --     go (x, y) (mins, maxs) = (min x y : mins, max x y : maxs)
 
 -- powerOfExponation :: Int
--- powerOfExponation = 8
+-- powerOfExponation = 2
 
 -- norm :: [Int] -> Float
 -- norm l = fromIntegral (sum (map (^ powerOfExponation) l)) ** (1 / fromIntegral powerOfExponation)
@@ -72,6 +72,18 @@ dist (x:xs) (y:ys) = (x-y)^powerOfExponation + dist xs ys
 
 -- dist :: [Int] -> [Int] -> Int
 -- dist a b = floor ( 1000 * (1 - wjs a b))
+
+-- Yet another Jaccard based idea
+-- metric :: [Int] -> [Int] -> Double
+-- metric [] [] = 0
+-- metric [] _ = error "list size mismatch"
+-- metric _ [] = error "list size mismatch"
+-- metric (x:xs) (y:ys)
+--     | y == 0    = error "division by zero"
+--     | otherwise = if x <= y then (fromIntegral x / fromIntegral y) + metric xs ys else (fromIntegral y / fromIntegral x ) + metric xs ys
+
+-- dist :: [Int] -> [Int] -> Int
+-- dist l1 l2 = floor (1000 * (50 - metric l1 l2 ))
 
 thd :: (a,b,c) -> c
 thd (_,_,x) = x

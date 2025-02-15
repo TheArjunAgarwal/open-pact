@@ -12,20 +12,23 @@ data Match = Match {
     email      :: String,
     matchName  :: String,
     matchEmail :: String
+
 } deriving Show
 
 -- Define how to convert Match into CSV format
 instance ToRecord Match where 
     toRecord (Match name email matchName matchEmail) =
         record [toField name, toField email, toField matchName, toField matchEmail]
+
 -- same same but different
 data Top = Top {
     nameT :: String,
-    matchNameT :: String
+    matchNameT :: String,
+    score :: Int
 } deriving Show
 
 instance ToRecord Top where
-    toRecord (Top nameT matchNameT) = record [toField nameT, toField matchNameT]
+    toRecord (Top nameT matchNameT scoreT) = record [toField nameT, toField matchNameT, toField scoreT]
 
 -- Function to write a list of Match data to a CSV file
 writeMatchesToCSV :: FilePath -> [Match] -> IO ()

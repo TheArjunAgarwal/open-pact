@@ -24,18 +24,16 @@ main = do
 
 
 
-score :: (String, String) -> M.Map (String, String) Float -> Float
-score (x,y) dataMap = let a = M.findWithDefault (-1.1) (x,y) dataMap in
-    if (a == (-1.1)) then M.findWithDefault (-1.0) (y,x) dataMap else a
-
-
 heart :: IO ()
 heart = do
-    csvData <- BL.readFile "test.csv"  -- Read the file (IO operation)
+    csvData <- BL.readFile "realData.csv"  -- Read the file (IO operation)
     let profiles = parseCSV csvData    -- Pass data to the pure function
         roomMates = roomies $ preferenceOrder profiles
         emailName = emailLookup profiles
         matches = map (\(x,y) -> Match (M.findWithDefault "" x emailName) x (M.findWithDefault "" y emailName) y ) twosidedmatches
         twosidedmatches = roomMates ++ map (\(x,y) -> (y,x)) roomMates
+        scoreList = preferenceListWithScores profiles
+        topList = map (\(x,y,z) -> Top (M.findWithDefault "" x emailName) (M.findWithDefault "" y emailName) z) scoreList
     writeMatchesToCSV "matches.csv" matches
+    writeTopToCSV "top.csv" topList
     putStrLn "CSV file written successfully!"
