@@ -1,194 +1,241 @@
-	Wed Feb  5 14:16 2025 Time and Allocation Profiling Report  (Final)
+	Thu Feb  6 01:58 2025 Time and Allocation Profiling Report  (Final)
 
 	   Marraige-Pact +RTS -p -RTS
 
-	total time  =       12.78 secs   (12780 ticks @ 1000 us, 1 processor)
-	total alloc = 21,190,425,832 bytes  (excludes profiling overheads)
+	total time  =        0.01 secs   (10 ticks @ 1000 us, 1 processor)
+	total alloc =  10,190,688 bytes  (excludes profiling overheads)
 
-COST CENTRE               MODULE     SRC                               %time %alloc
+COST CENTRE                         MODULE                           SRC                                                   %time %alloc
 
-irv2.removeRejects.newAns Irving     app/Irving.hs:54:9-53              75.4   85.0
-irv2.removeRejects.prefY  Irving     app/Irving.hs:53:9-42               9.2    0.0
-dist                      CsvDecoder app/CsvDecoder.hs:(35,1)-(38,57)    4.2    3.8
-irv1.go.newP'             Irving     app/Irving.hs:29:21-71              3.5    3.0
-irv1.go.newB              Irving     app/Irving.hs:28:21-70              2.9    2.6
-preferenceOrder.\         CsvDecoder app/CsvDecoder.hs:46:36-62          2.8    4.2
+writeTopToCSV                       CsvMaker                         app/CsvMaker.hs:37:1-65                                20.0    6.0
+dist                                CsvDecoder                       app/CsvDecoder.hs:(35,1)-(38,57)                       20.0   14.0
+parse                               Data.Attoparsec.ByteString.Lazy  Data/Attoparsec/ByteString/Lazy.hs:(89,1)-(96,56)      10.0    5.8
+signed                              Data.Attoparsec.ByteString.Char8 Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)   10.0    5.6
+heart                               Main                             app/Main.hs:(33,1)-(44,45)                             10.0    0.9
+irv1.go.newP'                       Irving                           app/Irving.hs:29:21-71                                 10.0    1.8
+preferenceListWithScores.dedupedMap CsvDecoder                       app/CsvDecoder.hs:62:9-91                              10.0    5.1
+preferenceListWithScores            CsvDecoder                       app/CsvDecoder.hs:(53,1)-(65,66)                       10.0    3.8
+prompt                              Data.Attoparsec.Internal         Data/Attoparsec/Internal.hs:(55,1)-(58,45)              0.0    1.3
+decimal                             Data.Attoparsec.ByteString.Char8 Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)    0.0    3.8
+recordSep                           Data.Csv.Encoding                src/Data/Csv/Encoding.hs:(342,1)-(343,32)               0.0    1.4
+irv2.removeRejects.newAns           Irving                           app/Irving.hs:54:9-53                                   0.0    3.0
+irv1.go.newB                        Irving                           app/Irving.hs:28:21-70                                  0.0    1.5
+toRecord                            CsvMaker                         app/CsvMaker.hs:29:5-103                                0.0   27.0
+preferenceOrder.\                   CsvDecoder                       app/CsvDecoder.hs:50:36-62                              0.0    4.7
+preferenceListWithScoresUnsorted    CsvDecoder                       app/CsvDecoder.hs:48:1-126                              0.0    2.4
+parseRecord                         CsvDecoder                       app/CsvDecoder.hs:(20,5)-(22,78)                        0.0    4.6
 
 
-                                                                                                                                                          individual      inherited
-COST CENTRE                           MODULE                            SRC                                                            no.     entries  %time %alloc   %time %alloc
+                                                                                                                                                        individual      inherited
+COST CENTRE                                 MODULE                            SRC                                                    no.     entries  %time %alloc   %time %alloc
 
-MAIN                                  MAIN                              <built-in>                                                     304           0    0.0    0.0   100.0  100.0
- CAF                                  CsvDecoder                        <entire-module>                                                607           0    0.0    0.0     0.0    0.0
-  powerOfExponation                   CsvDecoder                        app/CsvDecoder.hs:32:1-21                                      716           1    0.0    0.0     0.0    0.0
-  parseCSV                            CsvDecoder                        app/CsvDecoder.hs:(26,1)-(29,34)                               655           0    0.0    0.0     0.0    0.0
-   endOfInput                         Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)                   656           1    0.0    0.0     0.0    0.0
-  parseRecord                         CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                               643           0    0.0    0.0     0.0    0.0
-   signed                             Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)           644           1    0.0    0.0     0.0    0.0
- CAF                                  CsvMaker                          <entire-module>                                                606           0    0.0    0.0     0.0    0.0
-  writeMatchesToCSV                   CsvMaker                          app/CsvMaker.hs:(32,1)-(33,42)                                 615           0    0.0    0.0     0.0    0.0
-   encDelimiter                       Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:202:7-18                              616           1    0.0    0.0     0.0    0.0
-   encQuoting                         Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:213:7-16                              760           1    0.0    0.0     0.0    0.0
-   encUseCrLf                         Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:206:7-16                              762           1    0.0    0.0     0.0    0.0
-   recordSep                          Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)                      761           1    0.0    0.0     0.0    0.0
- CAF                                  Irving                            <entire-module>                                                605           0    0.0    0.0     0.0    0.0
-  areWeDone                           Irving                            app/Irving.hs:67:1-45                                          736           1    0.0    0.0     0.0    0.0
- CAF                                  Main                              <entire-module>                                                604           0    0.0    0.0     0.0    0.0
-  heart                               Main                              app/Main.hs:(33,1)-(41,45)                                     610           1    0.0    0.0     0.0    0.0
-  heartbeat                           Main                              app/Main.hs:(12,1)-(16,13)                                     612           1    0.0    0.0     0.0    0.0
-  main                                Main                              app/Main.hs:(20,1)-(23,9)                                      608           1    0.0    0.0     0.0    0.0
- CAF                                  Data.Csv.Parser                   <entire-module>                                                603           0    0.0    0.0     0.0    0.0
-  defaultDecodeOptions                Data.Csv.Parser                   src/Data/Csv/Parser.hs:(59,1)-(61,5)                           620           1    0.0    0.0     0.0    0.0
- CAF                                  Data.Csv.Conversion               <entire-module>                                                602           0    0.0    0.0     0.0    0.0
-  record                              Data.Csv.Conversion               src/Data/Csv/Conversion.hs:1146:1-19                           745           1    0.0    0.0     0.0    0.0
- CAF                                  Data.Csv.Encoding                 <entire-module>                                                600           0    0.0    0.0     0.0    0.0
-  defaultEncodeOptions                Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(218,1)-(223,5)                       617           1    0.0    0.0     0.0    0.0
- CAF                                  Data.Csv.Util                     <entire-module>                                                598           0    0.0    0.0     0.0    0.0
-  cr                                  Data.Csv.Util                     src/Data/Csv/Util.hs:56:1-7                                    628           1    0.0    0.0     0.0    0.0
-  doubleQuote                         Data.Csv.Util                     src/Data/Csv/Util.hs:54:1-16                                   625           1    0.0    0.0     0.0    0.0
-  newline                             Data.Csv.Util                     src/Data/Csv/Util.hs:55:1-12                                   627           1    0.0    0.0     0.0    0.0
- CAF                                  Data.Attoparsec.ByteString.Char8  <entire-module>                                                575           0    0.0    0.0     0.0    0.0
-  decimal                             Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)           648           1    0.0    0.0     0.0    0.0
- CAF                                  GHC.Conc.Signal                   <entire-module>                                                418           0    0.0    0.0     0.0    0.0
- CAF                                  GHC.IO.Encoding                   <entire-module>                                                400           0    0.0    0.0     0.0    0.0
- CAF                                  GHC.IO.Encoding.Iconv             <entire-module>                                                398           0    0.0    0.0     0.0    0.0
- CAF                                  GHC.IO.FD                         <entire-module>                                                391           0    0.0    0.0     0.0    0.0
- CAF                                  GHC.IO.Handle.FD                  <entire-module>                                                389           0    0.0    0.0     0.0    0.0
- CAF                                  GHC.Event.Thread                  <entire-module>                                                324           0    0.0    0.0     0.0    0.0
- heartbeat                            Main                              app/Main.hs:(12,1)-(16,13)                                     613           0    0.0    0.0     0.0    0.0
- main                                 Main                              app/Main.hs:(20,1)-(23,9)                                      609           0    0.0    0.0   100.0  100.0
-  heart                               Main                              app/Main.hs:(33,1)-(41,45)                                     611           0    0.0    0.0   100.0  100.0
-   heart.emailName                    Main                              app/Main.hs:37:9-40                                            753           1    0.0    0.0     0.0    0.0
-    emailLookup                       CsvDecoder                        app/CsvDecoder.hs:42:1-71                                      754           1    0.0    0.0     0.0    0.0
-     unId                             Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        755        1001    0.0    0.0     0.0    0.0
-     array#                           Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                756        1000    0.0    0.0     0.0    0.0
-     emailLookup.\                    CsvDecoder                        app/CsvDecoder.hs:42:41-57                                     757        1000    0.0    0.0     0.0    0.0
-      email                           CsvDecoder                        app/CsvDecoder.hs:14:5-9                                       758        1000    0.0    0.0     0.0    0.0
-      name                            CsvDecoder                        app/CsvDecoder.hs:13:5-8                                       759        1000    0.0    0.0     0.0    0.0
-   heart.matches                      Main                              app/Main.hs:38:9-130                                           741           1    0.0    0.0     0.0    0.0
-    heart.matches.\                   Main                              app/Main.hs:38:34-112                                          743        1000    0.0    0.0     0.0    0.0
-   heart.profiles                     Main                              app/Main.hs:35:9-35                                            618           1    0.0    0.0     0.2    0.4
-    parseCSV                          CsvDecoder                        app/CsvDecoder.hs:(26,1)-(29,34)                               619           1    0.0    0.0     0.2    0.4
-     parse                            Data.Attoparsec.ByteString.Lazy   Data/Attoparsec/ByteString/Lazy.hs:(89,1)-(96,56)              621           1    0.0    0.0     0.0    0.0
-      runParser                       Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     622        3202    0.0    0.0     0.0    0.0
-      fromPos                         Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     626         324    0.0    0.0     0.0    0.0
-      marray#                         Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                               633         265    0.0    0.0     0.0    0.0
-      unId                            Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        632         265    0.0    0.0     0.0    0.0
-      blankLine                       Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                                   634           5    0.0    0.0     0.0    0.0
-       unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        635           5    0.0    0.0     0.0    0.0
-      parseRecord                     CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                               636           5    0.0    0.0     0.0    0.0
-       runParser                      Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     640        2250    0.0    0.0     0.0    0.0
-       fromPos                        Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     642         500    0.0    0.0     0.0    0.0
-       unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        637         265    0.0    0.0     0.0    0.0
-       array#                         Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                638         260    0.0    0.0     0.0    0.0
-       unBox                          Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                           639         260    0.0    0.0     0.0    0.0
-       buffer                         Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59          641         250    0.0    0.0     0.0    0.0
-       signed                         Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)           645           0    0.0    0.0     0.0    0.0
-        runParser                     Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     646        3250    0.0    0.0     0.0    0.0
-        fromPos                       Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     647         500    0.0    0.0     0.0    0.0
-        decimal                       Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)           649           0    0.0    0.0     0.0    0.0
-         runParser                    Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     650        4000    0.0    0.0     0.0    0.0
-         fromPos                      Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     651        1250    0.0    0.0     0.0    0.0
-         prompt                       Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)                     652         250    0.0    0.0     0.0    0.0
-          runParser                   Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     653        2250    0.0    0.0     0.0    0.0
-          fromPos                     Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     654         500    0.0    0.0     0.0    0.0
-      sChunks                         Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36             631           5    0.0    0.0     0.0    0.0
-      sSize                           Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34             630           5    0.0    0.0     0.0    0.0
-      upperBound                      Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30)         629           5    0.0    0.0     0.0    0.0
-      buffer                          Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59          623           1    0.0    0.0     0.0    0.0
-      decDelimiter                    Data.Csv.Parser                   src/Data/Csv/Parser.hs:54:7-18                                 624           1    0.0    0.0     0.0    0.0
-      endOfInput                      Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)                   685           0    0.0    0.0     0.0    0.0
-      prompt                          Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)                     686           0    0.0    0.0     0.0    0.0
-       runParser                      Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     687          19    0.0    0.0     0.0    0.0
-       fromPos                        Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     690           6    0.0    0.0     0.0    0.0
-       pappend                        Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:(105,1)-(106,78) 688           4    0.0    0.0     0.0    0.0
-       endOfInput                     Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)                   689           0    0.0    0.0     0.0    0.0
-     endOfInput                       Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)                   657           0    0.0    0.0     0.2    0.4
-      parse                           Data.Attoparsec.ByteString.Lazy   Data/Attoparsec/ByteString/Lazy.hs:(89,1)-(96,56)              658           0    0.1    0.1     0.2    0.4
-       runParser                      Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     659      998794    0.0    0.0     0.0    0.0
-       fromPos                        Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     660      104672    0.0    0.0     0.0    0.0
-       marray#                        Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                               665       53736    0.0    0.0     0.0    0.0
-       unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        664       53736    0.0    0.0     0.0    0.0
-       sChunks                        Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36             663         996    0.0    0.0     0.0    0.0
-       sSize                          Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34             662         996    0.0    0.0     0.0    0.0
-       upperBound                     Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30)         661         996    0.0    0.0     0.0    0.0
-       blankLine                      Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                                   666         995    0.0    0.0     0.0    0.0
-        unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        667         995    0.0    0.0     0.0    0.0
-       parseRecord                    CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                               668         995    0.0    0.1     0.2    0.3
-        runParser                     Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     672      447750    0.0    0.0     0.0    0.0
-        fromPos                       Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     674       99500    0.0    0.0     0.0    0.0
-        unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        669       52735    0.0    0.0     0.0    0.0
-        array#                        Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                670       51740    0.0    0.0     0.0    0.0
-        unBox                         Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                           671       51740    0.0    0.0     0.0    0.0
-        buffer                        Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59          673       49750    0.0    0.0     0.0    0.0
-        signed                        Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)           675           0    0.0    0.1     0.1    0.2
-         runParser                    Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     676      646750    0.0    0.0     0.0    0.0
-         fromPos                      Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     677       99500    0.0    0.0     0.0    0.0
-         decimal                      Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)           678           0    0.0    0.1     0.1    0.1
-          runParser                   Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     679      796000    0.0    0.0     0.0    0.0
-          fromPos                     Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     680      248750    0.0    0.0     0.0    0.0
-          prompt                      Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)                     681       49750    0.1    0.1     0.1    0.1
-           runParser                  Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     682      447750    0.0    0.0     0.0    0.0
-           fromPos                    Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     683       99500    0.0    0.0     0.0    0.0
-       prompt                         Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)                     684           5    0.0    0.0     0.0    0.0
-        runParser                     Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15                     691          13    0.0    0.0     0.0    0.0
-        fromPos                       Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27                     692           2    0.0    0.0     0.0    0.0
-        marray#                       Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                               697           2    0.0    0.0     0.0    0.0
-        unId                          Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        696           2    0.0    0.0     0.0    0.0
-        blankLine                     Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                                   698           1    0.0    0.0     0.0    0.0
-         unId                         Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        699           2    0.0    0.0     0.0    0.0
-         array#                       Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                701           1    0.0    0.0     0.0    0.0
-         unBox                        Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                           700           1    0.0    0.0     0.0    0.0
-        sChunks                       Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36             695           1    0.0    0.0     0.0    0.0
-        sSize                         Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34             694           1    0.0    0.0     0.0    0.0
-        upperBound                    Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30)         693           1    0.0    0.0     0.0    0.0
-   heart.roomMates                    Main                              app/Main.hs:36:9-54                                            702           1    0.0    0.0    99.5   99.6
-    preferenceOrder                   CsvDecoder                        app/CsvDecoder.hs:46:1-100                                     703           1    0.0    0.0     7.6    8.5
-     preferenceOrder.\                CsvDecoder                        app/CsvDecoder.hs:46:36-62                                     712        1000    2.8    4.2     2.8    4.2
-     preferenceListWithScoresUnsorted CsvDecoder                        app/CsvDecoder.hs:44:1-126                                     704           1    0.6    0.6     4.8    4.4
-      dist                            CsvDecoder                        app/CsvDecoder.hs:(35,1)-(38,57)                               715    50949000    4.2    3.8     4.2    3.8
-      profileList                     CsvDecoder                        app/CsvDecoder.hs:40:1-66                                      705           2    0.0    0.0     0.0    0.0
-       unId                           Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        706        2002    0.0    0.0     0.0    0.0
-       array#                         Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                707        2000    0.0    0.0     0.0    0.0
-       profileList.\                  CsvDecoder                        app/CsvDecoder.hs:40:28-52                                     708        2000    0.0    0.0     0.0    0.0
-        choiceVector                  CsvDecoder                        app/CsvDecoder.hs:15:5-16                                      714        2000    0.0    0.0     0.0    0.0
-        email                         CsvDecoder                        app/CsvDecoder.hs:14:5-9                                       713        2000    0.0    0.0     0.0    0.0
-    roomies                           Irving                            app/Irving.hs:97:1-99                                          709           1    0.0    0.0    91.9   91.0
-     roomies.\                        Irving                            app/Irving.hs:97:39-74                                         764      207262    0.1    0.0     0.1    0.0
-     irv1                             Irving                            app/Irving.hs:(18,1)-(33,97)                                   710           1    0.0    0.0     7.1    6.0
-      irv1.go                         Irving                            app/Irving.hs:(19,5)-(33,97)                                   711       13156    0.1    0.0     7.1    6.0
-       irv1.go.b'                     Irving                            app/Irving.hs:25:21-55                                         719       12155    0.0    0.0     0.0    0.0
-       irv1.go.pred                   Irving                            app/Irving.hs:26:21-59                                         718       12155    0.0    0.0     0.0    0.0
-       irv1.go.prefP                  Irving                            app/Irving.hs:23:17-51                                         717       12155    0.0    0.0     0.0    0.0
-       irv1.go.newB                   Irving                            app/Irving.hs:28:21-70                                         721       11411    2.9    2.6     2.9    2.6
-       irv1.go.newP'                  Irving                            app/Irving.hs:29:21-71                                         725       11411    3.5    3.0     3.5    3.0
-       irv1.go.newPref'               Irving                            app/Irving.hs:32:21-70                                         720       11411    0.1    0.0     0.1    0.0
-       irv1.go.newB'                  Irving                            app/Irving.hs:27:21-72                                         723         744    0.3    0.2     0.3    0.2
-       irv1.go.newP                   Irving                            app/Irving.hs:30:21-71                                         724         744    0.2    0.2     0.2    0.2
-       irv1.go.newPref                Irving                            app/Irving.hs:31:21-70                                         722         744    0.0    0.0     0.0    0.0
-     irv2                             Irving                            app/Irving.hs:(43,1)-(54,53)                                   726           1    0.0    0.0    84.7   85.1
-      irv2.go                         Irving                            app/Irving.hs:(44,5)-(48,63)                                   727        1001    0.0    0.0    84.7   85.1
-       irv2.removeRejects             Irving                            app/Irving.hs:(51,5)-(54,53)                                   732      487845    0.1    0.1    84.7   85.1
-        irv2.removeRejects.newAns     Irving                            app/Irving.hs:54:9-53                                          733      486845   75.4   85.0    75.4   85.0
-        irv2.removeRejects.prefY      Irving                            app/Irving.hs:53:9-42                                          734      486845    9.2    0.0     9.2    0.0
-       irv2.go.(...)                  Irving                            app/Irving.hs:47:13-46                                         729        1000    0.0    0.0     0.0    0.0
-        rejection                     Irving                            app/Irving.hs:(39,1)-(40,85)                                   730        1000    0.0    0.0     0.0    0.0
-       irv2.go.new                    Irving                            app/Irving.hs:47:13-46                                         739        1000    0.0    0.0     0.0    0.0
-       irv2.go.rejects                Irving                            app/Irving.hs:47:13-46                                         731        1000    0.0    0.0     0.0    0.0
-       irv2.go.xPref                  Irving                            app/Irving.hs:46:13-46                                         728        1000    0.0    0.0     0.0    0.0
-     irv3                             Irving                            app/Irving.hs:(83,1)-(95,23)                                   735           1    0.0    0.0     0.0    0.0
-      irv3.\                          Irving                            app/Irving.hs:84:39-49                                         742        1000    0.0    0.0     0.0    0.0
-      areWeDone                       Irving                            app/Irving.hs:67:1-45                                          737           0    0.0    0.0     0.0    0.0
-       areWeDone.\                    Irving                            app/Irving.hs:67:25-37                                         738        1000    0.0    0.0     0.0    0.0
-   heart.twosidedmatches              Main                              app/Main.hs:39:9-70                                            740           1    0.0    0.0     0.0    0.0
-    heart.twosidedmatches.\           Main                              app/Main.hs:39:55-59                                           765         500    0.0    0.0     0.0    0.0
-   writeMatchesToCSV                  CsvMaker                          app/CsvMaker.hs:(32,1)-(33,42)                                 614           1    0.2    0.0     0.2    0.0
-    unId                              Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        751        5000    0.0    0.0     0.0    0.0
-    array#                            Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                                752        4000    0.0    0.0     0.0    0.0
-    toRecord                          CsvMaker                          app/CsvMaker.hs:(19,5)-(20,83)                                 744        1000    0.0    0.0     0.0    0.0
-     marray#                          Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                               750        5000    0.0    0.0     0.0    0.0
-     unId                             Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                        749        5000    0.0    0.0     0.0    0.0
-     sChunks                          Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36             748        1000    0.0    0.0     0.0    0.0
-     sSize                            Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34             747        1000    0.0    0.0     0.0    0.0
-     upperBound                       Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30)         746        1000    0.0    0.0     0.0    0.0
-    recordSep                         Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)                      763           0    0.0    0.0     0.0    0.0
+MAIN                                        MAIN                              <built-in>                                             304           0    0.0    0.3   100.0  100.0
+ CAF                                        CsvDecoder                        <entire-module>                                        607           0    0.0    0.0     0.0    0.0
+  powerOfExponation                         CsvDecoder                        app/CsvDecoder.hs:32:1-21                              722           1    0.0    0.0     0.0    0.0
+  parseCSV                                  CsvDecoder                        app/CsvDecoder.hs:(26,1)-(29,34)                       657           0    0.0    0.0     0.0    0.0
+   endOfInput                               Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)           658           1    0.0    0.0     0.0    0.0
+  parseRecord                               CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                       645           0    0.0    0.0     0.0    0.0
+   signed                                   Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)   646           1    0.0    0.0     0.0    0.0
+ CAF                                        CsvMaker                          <entire-module>                                        606           0    0.0    0.0     0.0    0.0
+  writeMatchesToCSV                         CsvMaker                          app/CsvMaker.hs:(33,1)-(34,42)                         615           0    0.0    0.0     0.0    0.0
+   encDelimiter                             Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:202:7-18                      616           1    0.0    0.0     0.0    0.0
+   encQuoting                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:213:7-16                      766           1    0.0    0.0     0.0    0.0
+   encUseCrLf                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:206:7-16                      768           1    0.0    0.0     0.0    0.0
+   recordSep                                Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)              767           1    0.0    0.0     0.0    0.0
+  writeTopToCSV                             CsvMaker                          app/CsvMaker.hs:37:1-65                                773           0    0.0    0.0     0.0    0.0
+   encDelimiter                             Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:202:7-18                      774           1    0.0    0.0     0.0    0.0
+   encQuoting                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:213:7-16                      799           1    0.0    0.0     0.0    0.0
+   encUseCrLf                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:206:7-16                      801           1    0.0    0.0     0.0    0.0
+   recordSep                                Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)              800           1    0.0    0.0     0.0    0.0
+ CAF                                        Irving                            <entire-module>                                        605           0    0.0    0.0     0.0    0.0
+  areWeDone                                 Irving                            app/Irving.hs:67:1-45                                  742           1    0.0    0.0     0.0    0.0
+ CAF                                        Main                              <entire-module>                                        604           0    0.0    0.1     0.0    0.1
+  heart                                     Main                              app/Main.hs:(33,1)-(44,45)                             610           1    0.0    0.0     0.0    0.0
+  heartbeat                                 Main                              app/Main.hs:(12,1)-(16,13)                             612           1    0.0    0.0     0.0    0.0
+  main                                      Main                              app/Main.hs:(20,1)-(23,9)                              608           1    0.0    0.0     0.0    0.0
+ CAF                                        Data.Csv.Parser                   <entire-module>                                        603           0    0.0    0.0     0.0    0.0
+  defaultDecodeOptions                      Data.Csv.Parser                   src/Data/Csv/Parser.hs:(59,1)-(61,5)                   622           1    0.0    0.0     0.0    0.0
+ CAF                                        Data.Csv.Conversion               <entire-module>                                        602           0    0.0    0.0     0.0    0.0
+  record                                    Data.Csv.Conversion               src/Data/Csv/Conversion.hs:1146:1-19                   751           1    0.0    0.0     0.0    0.0
+ CAF                                        Data.Csv.Encoding                 <entire-module>                                        600           0    0.0    0.0     0.0    0.0
+  defaultEncodeOptions                      Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(218,1)-(223,5)               617           1    0.0    0.0     0.0    0.0
+ CAF                                        Data.Csv.Util                     <entire-module>                                        598           0    0.0    0.0     0.0    0.0
+  cr                                        Data.Csv.Util                     src/Data/Csv/Util.hs:56:1-7                            630           1    0.0    0.0     0.0    0.0
+  doubleQuote                               Data.Csv.Util                     src/Data/Csv/Util.hs:54:1-16                           627           1    0.0    0.0     0.0    0.0
+  newline                                   Data.Csv.Util                     src/Data/Csv/Util.hs:55:1-12                           629           1    0.0    0.0     0.0    0.0
+ CAF                                        Data.Attoparsec.ByteString.Char8  <entire-module>                                        575           0    0.0    0.0     0.0    0.0
+  decimal                                   Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)   650           1    0.0    0.0     0.0    0.0
+ CAF                                        GHC.Conc.Signal                   <entire-module>                                        418           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Encoding                   <entire-module>                                        400           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Encoding.Iconv             <entire-module>                                        398           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.FD                         <entire-module>                                        391           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Handle.FD                  <entire-module>                                        389           0    0.0    0.3     0.0    0.3
+ CAF                                        GHC.Event.Thread                  <entire-module>                                        324           0    0.0    0.0     0.0    0.0
+ heartbeat                                  Main                              app/Main.hs:(12,1)-(16,13)                             613           0    0.0    0.1     0.0    0.1
+ main                                       Main                              app/Main.hs:(20,1)-(23,9)                              609           0    0.0    0.0   100.0   99.2
+  heart                                     Main                              app/Main.hs:(33,1)-(44,45)                             611           0   10.0    0.9   100.0   99.2
+   heart.emailName                          Main                              app/Main.hs:37:9-40                                    759           1    0.0    0.0     0.0    0.1
+    emailLookup                             CsvDecoder                        app/CsvDecoder.hs:45:1-71                              760           1    0.0    0.1     0.0    0.1
+     unId                                   Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                761          32    0.0    0.0     0.0    0.0
+     array#                                 Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        762          31    0.0    0.0     0.0    0.0
+     emailLookup.\                          CsvDecoder                        app/CsvDecoder.hs:45:41-57                             763          31    0.0    0.0     0.0    0.0
+      email                                 CsvDecoder                        app/CsvDecoder.hs:14:5-9                               764          31    0.0    0.0     0.0    0.0
+      name                                  CsvDecoder                        app/CsvDecoder.hs:13:5-8                               765          31    0.0    0.0     0.0    0.0
+   heart.matches                            Main                              app/Main.hs:38:9-130                                   747           1    0.0    0.1     0.0    0.1
+    heart.matches.\                         Main                              app/Main.hs:38:34-112                                  749          30    0.0    0.0     0.0    0.0
+   heart.profiles                           Main                              app/Main.hs:35:9-35                                    620           1    0.0    0.0    20.0   21.9
+    parseCSV                                CsvDecoder                        app/CsvDecoder.hs:(26,1)-(29,34)                       621           1    0.0    0.0    20.0   21.9
+     parse                                  Data.Attoparsec.ByteString.Lazy   Data/Attoparsec/ByteString/Lazy.hs:(89,1)-(96,56)      623           1    0.0    0.2     0.0    0.7
+      runParser                             Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             624         953    0.0    0.0     0.0    0.0
+      fromPos                               Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             628         100    0.0    0.0     0.0    0.0
+      marray#                               Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       635          51    0.0    0.0     0.0    0.0
+      unId                                  Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                634          51    0.0    0.0     0.0    0.0
+      blankLine                             Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                           636           1    0.0    0.0     0.0    0.0
+       unId                                 Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                637           1    0.0    0.0     0.0    0.0
+      buffer                                Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59  625           1    0.0    0.0     0.0    0.0
+      decDelimiter                          Data.Csv.Parser                   src/Data/Csv/Parser.hs:54:7-18                         626           1    0.0    0.0     0.0    0.0
+      parseRecord                           CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                       638           1    0.0    0.1     0.0    0.5
+       runParser                            Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             642         432    0.0    0.0     0.0    0.0
+       fromPos                              Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             644          96    0.0    0.0     0.0    0.0
+       unId                                 Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                639          51    0.0    0.0     0.0    0.0
+       array#                               Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        640          50    0.0    0.0     0.0    0.0
+       unBox                                Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                   641          50    0.0    0.0     0.0    0.0
+       buffer                               Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59  643          48    0.0    0.0     0.0    0.0
+       signed                               Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)   647           0    0.0    0.2     0.0    0.3
+        runParser                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             648         624    0.0    0.0     0.0    0.0
+        fromPos                             Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             649          96    0.0    0.0     0.0    0.0
+        decimal                             Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)   651           0    0.0    0.1     0.0    0.2
+         runParser                          Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             652         862    0.0    0.0     0.0    0.0
+         fromPos                            Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             653         240    0.0    0.0     0.0    0.0
+         prompt                             Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)             654          48    0.0    0.0     0.0    0.0
+          runParser                         Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             655         103    0.0    0.0     0.0    0.0
+          fromPos                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             656           2    0.0    0.0     0.0    0.0
+      sChunks                               Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     633           1    0.0    0.0     0.0    0.0
+      sSize                                 Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     632           1    0.0    0.0     0.0    0.0
+      upperBound                            Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 631           1    0.0    0.0     0.0    0.0
+      endOfInput                            Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)           687           0    0.0    0.0     0.0    0.0
+     endOfInput                             Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(110,1)-(117,55)           659           0    0.0    0.0    20.0   21.2
+      parse                                 Data.Attoparsec.ByteString.Lazy   Data/Attoparsec/ByteString/Lazy.hs:(89,1)-(96,56)      660           0   10.0    5.6    20.0   21.2
+       runParser                            Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             661       28834    0.0    0.0     0.0    0.0
+       fromPos                              Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             662        3030    0.0    0.0     0.0    0.0
+       marray#                              Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       667        1511    0.0    0.0     0.0    0.0
+       unId                                 Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                666        1511    0.0    0.0     0.0    0.0
+       prompt                               Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)             686          49    0.0    0.0     0.0    0.6
+        runParser                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             689         137    0.0    0.0     0.0    0.0
+        marray#                             Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       694          51    0.0    0.0     0.0    0.0
+        unId                                Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                693          51    0.0    0.0     0.0    0.0
+        blankLine                           Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                           695           1    0.0    0.0     0.0    0.0
+         unId                               Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                696           1    0.0    0.0     0.0    0.0
+        parseRecord                         CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                       697           1    0.0    0.1     0.0    0.5
+         runParser                          Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             701         432    0.0    0.0     0.0    0.0
+         fromPos                            Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             703          96    0.0    0.0     0.0    0.0
+         unId                               Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                698          51    0.0    0.0     0.0    0.0
+         array#                             Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        699          50    0.0    0.0     0.0    0.0
+         unBox                              Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                   700          50    0.0    0.0     0.0    0.0
+         buffer                             Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59  702          48    0.0    0.0     0.0    0.0
+         signed                             Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)   704           0    0.0    0.2     0.0    0.3
+          runParser                         Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             705         624    0.0    0.0     0.0    0.0
+          fromPos                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             706          96    0.0    0.0     0.0    0.0
+          decimal                           Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)   707           0    0.0    0.2     0.0    0.2
+           runParser                        Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             708         917    0.0    0.0     0.0    0.0
+           fromPos                          Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             709         242    0.0    0.0     0.0    0.0
+        sChunks                             Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     692           1    0.0    0.0     0.0    0.0
+        sSize                               Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     691           1    0.0    0.0     0.0    0.0
+        upperBound                          Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 690           1    0.0    0.0     0.0    0.0
+       sChunks                              Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     665          30    0.0    0.0     0.0    0.0
+       sSize                                Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     664          30    0.0    0.0     0.0    0.0
+       upperBound                           Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 663          30    0.0    0.0     0.0    0.0
+       blankLine                            Data.Csv.Util                     src/Data/Csv/Util.hs:34:1-52                           668          29    0.0    0.0     0.0    0.0
+        unId                                Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                669          29    0.0    0.0     0.0    0.0
+       parseRecord                          CsvDecoder                        app/CsvDecoder.hs:(20,5)-(22,78)                       670          29    0.0    4.3    10.0   15.1
+        runParser                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             674       12528    0.0    0.0     0.0    0.0
+        fromPos                             Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             676        2784    0.0    0.0     0.0    0.0
+        unId                                Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                671        1479    0.0    0.0     0.0    0.0
+        array#                              Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        672        1450    0.0    0.0     0.0    0.0
+        unBox                               Data.Stream.Monadic               src/Data/Stream/Monadic.hs:116:20-24                   673        1450    0.0    0.0     0.0    0.0
+        buffer                              Data.Attoparsec.ByteString.Buffer internal/Data/Attoparsec/ByteString/Buffer.hs:86:1-59  675        1392    0.0    0.8     0.0    0.8
+        signed                              Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(470,1)-(472,12)   677           0   10.0    5.2    10.0   10.0
+         runParser                          Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             678       18096    0.0    0.0     0.0    0.0
+         fromPos                            Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             679        2784    0.0    0.0     0.0    0.0
+         decimal                            Data.Attoparsec.ByteString.Char8  Data/Attoparsec/ByteString/Char8.hs:(447,1)-(448,49)   680           0    0.0    3.5     0.0    4.8
+          runParser                         Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             681       24998    0.0    0.0     0.0    0.0
+          fromPos                           Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             682        6960    0.0    0.0     0.0    0.0
+          prompt                            Data.Attoparsec.Internal          Data/Attoparsec/Internal.hs:(55,1)-(58,45)             683        1392    0.0    1.3     0.0    1.3
+           runParser                        Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:111:7-15             684        2987    0.0    0.0     0.0    0.0
+           fromPos                          Data.Attoparsec.Internal.Types    Data/Attoparsec/Internal/Types.hs:46:21-27             685          58    0.0    0.0     0.0    0.0
+   heart.roomMates                          Main                              app/Main.hs:36:9-54                                    618           1    0.0    0.0    20.0   21.4
+    preferenceOrder                         CsvDecoder                        app/CsvDecoder.hs:50:1-100                             619           1    0.0    0.0    10.0   13.0
+     preferenceOrder.\                      CsvDecoder                        app/CsvDecoder.hs:50:36-62                             718          31    0.0    4.7     0.0    4.7
+     preferenceListWithScoresUnsorted       CsvDecoder                        app/CsvDecoder.hs:48:1-126                             710           1    0.0    1.2    10.0    8.3
+      dist                                  CsvDecoder                        app/CsvDecoder.hs:(35,1)-(38,57)                       721       45570   10.0    7.0    10.0    7.0
+      profileList                           CsvDecoder                        app/CsvDecoder.hs:43:1-66                              711           2    0.0    0.1     0.0    0.1
+       unId                                 Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                712          64    0.0    0.0     0.0    0.0
+       array#                               Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        713          62    0.0    0.0     0.0    0.0
+       profileList.\                        CsvDecoder                        app/CsvDecoder.hs:43:28-52                             714          62    0.0    0.0     0.0    0.0
+        choiceVector                        CsvDecoder                        app/CsvDecoder.hs:15:5-16                              720          62    0.0    0.0     0.0    0.0
+        email                               CsvDecoder                        app/CsvDecoder.hs:14:5-9                               719          62    0.0    0.0     0.0    0.0
+    roomies                                 Irving                            app/Irving.hs:97:1-99                                  715           1    0.0    0.0    10.0    8.4
+     roomies.\                              Irving                            app/Irving.hs:97:39-74                                 770         181    0.0    0.0     0.0    0.0
+     irv1                                   Irving                            app/Irving.hs:(18,1)-(33,97)                           716           1    0.0    0.1    10.0    5.2
+      irv1.go                               Irving                            app/Irving.hs:(19,5)-(33,97)                           717         193    0.0    0.4    10.0    5.1
+       irv1.go.b'                           Irving                            app/Irving.hs:25:21-55                                 725         161    0.0    0.0     0.0    0.0
+       irv1.go.pred                         Irving                            app/Irving.hs:26:21-59                                 724         161    0.0    0.0     0.0    0.0
+       irv1.go.prefP                        Irving                            app/Irving.hs:23:17-51                                 723         161    0.0    0.0     0.0    0.0
+       irv1.go.newB                         Irving                            app/Irving.hs:28:21-70                                 727         135    0.0    1.5     0.0    1.5
+       irv1.go.newP'                        Irving                            app/Irving.hs:29:21-71                                 730         135   10.0    1.8    10.0    1.8
+       irv1.go.newPref'                     Irving                            app/Irving.hs:32:21-70                                 726         135    0.0    0.6     0.0    0.6
+       irv1.go.newB'                        Irving                            app/Irving.hs:27:21-72                                 729          26    0.0    0.4     0.0    0.4
+       irv1.go.newP                         Irving                            app/Irving.hs:30:21-71                                 731          26    0.0    0.4     0.0    0.4
+       irv1.go.newPref                      Irving                            app/Irving.hs:31:21-70                                 728          26    0.0    0.1     0.0    0.1
+     irv2                                   Irving                            app/Irving.hs:(43,1)-(54,53)                           732           1    0.0    0.0     0.0    3.2
+      irv2.go                               Irving                            app/Irving.hs:(44,5)-(48,63)                           733          31    0.0    0.1     0.0    3.2
+       irv2.removeRejects                   Irving                            app/Irving.hs:(51,5)-(54,53)                           738         319    0.0    0.1     0.0    3.1
+        irv2.removeRejects.newAns           Irving                            app/Irving.hs:54:9-53                                  739         289    0.0    3.0     0.0    3.0
+        irv2.removeRejects.prefY            Irving                            app/Irving.hs:53:9-42                                  740         289    0.0    0.0     0.0    0.0
+       irv2.go.(...)                        Irving                            app/Irving.hs:47:13-46                                 735          30    0.0    0.0     0.0    0.0
+        rejection                           Irving                            app/Irving.hs:(39,1)-(40,85)                           736          30    0.0    0.0     0.0    0.0
+       irv2.go.new                          Irving                            app/Irving.hs:47:13-46                                 745          30    0.0    0.0     0.0    0.0
+       irv2.go.rejects                      Irving                            app/Irving.hs:47:13-46                                 737          30    0.0    0.0     0.0    0.0
+       irv2.go.xPref                        Irving                            app/Irving.hs:46:13-46                                 734          30    0.0    0.0     0.0    0.0
+     irv3                                   Irving                            app/Irving.hs:(83,1)-(95,23)                           741           1    0.0    0.0     0.0    0.1
+      irv3.\                                Irving                            app/Irving.hs:84:39-49                                 748          30    0.0    0.0     0.0    0.0
+      areWeDone                             Irving                            app/Irving.hs:67:1-45                                  743           0    0.0    0.0     0.0    0.0
+       areWeDone.\                          Irving                            app/Irving.hs:67:25-37                                 744          30    0.0    0.0     0.0    0.0
+   heart.scoreList                          Main                              app/Main.hs:40:9-53                                    775           1    0.0    0.0    30.0   18.2
+    preferenceListWithScores                CsvDecoder                        app/CsvDecoder.hs:(53,1)-(65,66)                       776           1   10.0    3.8    30.0   18.2
+     thd                                    CsvDecoder                        app/CsvDecoder.hs:41:1-15                              787         465    0.0    0.0     0.0    0.0
+     preferenceListWithScores.dedupedMap    CsvDecoder                        app/CsvDecoder.hs:62:9-91                              785           1   10.0    5.1    10.0    5.3
+      preferenceListWithScores.normalizeKey CsvDecoder                        app/CsvDecoder.hs:59:9-62                              786         930    0.0    0.2     0.0    0.2
+     preferenceListWithScores.flattened     CsvDecoder                        app/CsvDecoder.hs:56:9-93                              777           1    0.0    0.8    10.0    9.1
+      preferenceListWithScoresUnsorted      CsvDecoder                        app/CsvDecoder.hs:48:1-126                             778           1    0.0    1.2    10.0    8.3
+       dist                                 CsvDecoder                        app/CsvDecoder.hs:(35,1)-(38,57)                       788       45570   10.0    7.0    10.0    7.0
+       profileList                          CsvDecoder                        app/CsvDecoder.hs:43:1-66                              779           2    0.0    0.1     0.0    0.1
+        unId                                Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                780          64    0.0    0.0     0.0    0.0
+        array#                              Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        781          62    0.0    0.0     0.0    0.0
+        profileList.\                       CsvDecoder                        app/CsvDecoder.hs:43:28-52                             782          62    0.0    0.0     0.0    0.0
+         choiceVector                       CsvDecoder                        app/CsvDecoder.hs:15:5-16                              784          62    0.0    0.0     0.0    0.0
+         email                              CsvDecoder                        app/CsvDecoder.hs:14:5-9                               783          62    0.0    0.0     0.0    0.0
+   heart.topList                            Main                              app/Main.hs:41:9-121                                   789           1    0.0    0.8     0.0    0.8
+    heart.topList.\                         Main                              app/Main.hs:41:36-110                                  790         465    0.0    0.0     0.0    0.0
+   heart.twosidedmatches                    Main                              app/Main.hs:39:9-70                                    746           1    0.0    0.0     0.0    0.0
+    heart.twosidedmatches.\                 Main                              app/Main.hs:39:55-59                                   771          15    0.0    0.0     0.0    0.0
+   writeMatchesToCSV                        CsvMaker                          app/CsvMaker.hs:(33,1)-(34,42)                         614           1    0.0    0.7     0.0    1.2
+    unId                                    Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                757         150    0.0    0.0     0.0    0.0
+    array#                                  Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        758         120    0.0    0.0     0.0    0.0
+    toRecord                                CsvMaker                          app/CsvMaker.hs:(19,5)-(20,83)                         750          30    0.0    0.4     0.0    0.4
+     marray#                                Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       756         150    0.0    0.0     0.0    0.0
+     unId                                   Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                755         150    0.0    0.0     0.0    0.0
+     sChunks                                Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     754          30    0.0    0.0     0.0    0.0
+     sSize                                  Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     753          30    0.0    0.0     0.0    0.0
+     upperBound                             Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 752          30    0.0    0.0     0.0    0.0
+    recordSep                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)              769           0    0.0    0.1     0.0    0.1
+   writeTopToCSV                            CsvMaker                          app/CsvMaker.hs:37:1-65                                772           1   20.0    6.0    20.0   34.3
+    unId                                    Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                797        1860    0.0    0.0     0.0    0.0
+    array#                                  Data.Primitive.Array              Data/Primitive/Array.hs:69:5-10                        798        1395    0.0    0.0     0.0    0.0
+    toRecord                                CsvMaker                          app/CsvMaker.hs:29:5-103                               791         465    0.0   27.0     0.0   27.0
+     marray#                                Data.Primitive.Array              Data/Primitive/Array.hs:112:5-11                       796        1860    0.0    0.0     0.0    0.0
+     unId                                   Data.Vector.Fusion.Util           src/Data/Vector/Fusion/Util.hs:25:21-24                795        1860    0.0    0.0     0.0    0.0
+     sChunks                                Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36     794         465    0.0    0.0     0.0    0.0
+     sSize                                  Data.Vector.Fusion.Bundle.Monadic src/Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34     793         465    0.0    0.0     0.0    0.0
+     upperBound                             Data.Vector.Fusion.Bundle.Size    src/Data/Vector/Fusion/Bundle/Size.hs:(129,1)-(131,30) 792         465    0.0    0.0     0.0    0.0
+    recordSep                               Data.Csv.Encoding                 src/Data/Csv/Encoding.hs:(342,1)-(343,32)              802           0    0.0    1.3     0.0    1.3
