@@ -4,31 +4,51 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def send_email(to_email, subject, body, sender_email, sender_password):
+    """
+    Sends an email using an SMTP SSL connection.
+
+    Parameters:
+    - to_email (str): Recipient email address.
+    - subject (str): Email subject line.
+    - body (str): Email content.
+    - sender_email (str): Sender email address.
+    - sender_password (str): Sender email password (should be stored securely).
+    """
     try:
+        # Create a multipart email message
         msg = MIMEMultipart()
         msg['From'] = sender_email
         msg['To'] = to_email
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        # Ensure persistent SSL connection
+        # Establish a secure connection to the SMTP server
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, to_email, msg.as_string())
         server.quit()
 
-        print(f"Email sent to {to_email}")
+        print(f"Email sent successfully to {to_email}")
     except Exception as e:
         print(f"Failed to send email to {to_email}: {e}")
 
 def main():
-    sender_email = "anulick0@gmail.com"  # Replace with your email
-    sender_password = "zepvxetearfedrma"  # Replace with your email password
+    """
+    Reads match data from a CSV file and sends personalized emails
+    to participants with their match details.
+    
+    Expects a CSV file with columns: @name, @mail, @match, @matchmail.
+    """
+    sender_email = "your_email@gmail.com"  # Replace with actual email
+    sender_password = "your_secure_app_password"  # Use environment variables or secure storage
     csv_file = "matches.csv"  # Path to the CSV file
 
+    # Email subject
     subject = "You've Been Matched!"
-    leaderboard = """\n\nPS: The best matches leaderboard is (I am only giving out initials...)
 
+    # Leaderboard (static text for top matches)
+    leaderboard = """\n\nPS: The best matches leaderboard is:
+    
 1. A + N
 2. TC + WS
 3. AD + L
@@ -40,17 +60,21 @@ def main():
 9. BP + NC
 10. AB + H
 
-And if we run my algorithm in reverse, the worst match on this campus is NS + S."""
+And if we run the algorithm in reverse, the worst match is NS + S.
+"""
 
-    with open(csv_file, newline='') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            name = row['@name']
-            email = row['@mail']
-            match = row['@match']
-            match_email = row['@matchmail']
+    # Open the CSV file and read each row
+    try:
+        with open(csv_file, newline='') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                name = row['@name']
+                email = row['@mail']
+                match = row['@match']
+                match_email = row['@matchmail']
 
-            body = f"""
+                # Email body with personalized match details
+                body = f"""
 Hi {name},
 
 Great news! Based on your responses, we’ve found a friendship match for you. Say hello to {match}!
@@ -69,7 +93,13 @@ Warm Regards,
 Arjun Maneesh Agarwal
 {leaderboard}
 """
-            send_email(email, subject, body, sender_email, sender_password)
+                # Send the email
+                send_email(email, subject, body, sender_email, sender_password)
+
+    except FileNotFoundError:
+        print(f"Error: CSV file '{csv_file}' not found.")
+    except KeyError as e:
+        print(f"Error: Missing expected column in CSV file: {e}")
 
 if __name__ == "__main__":
     main()
