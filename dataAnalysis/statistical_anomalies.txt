@@ -1,0 +1,77 @@
+📊 Fun Statistical Anomalies Detected
+============================================================
+
+🔹 Even Distributions:
+  - I pay close attention to my diet and nutrition.
+  - I prefer having a structured daily routine.
+  - I enjoy treating myself, even if it’s impractical.
+  - I prioritize work-life balance over professional ambition.
+  - Financial stability is more important to me than chasing passion projects.
+  - I enjoy social media and actively engage with it.
+  - I like playing games that encourage sharing personal thoughts and feelings.
+  - I try to live sustainably and minimize my impact on the planet.
+  - I believe everything will eventually be explained by science.
+  - I express what’s bothering me, even if it leads to uncomfortable conversations.
+  - I need friends who respond quickly to messages.
+  - I love celebrating birthdays and important milestones with friends.
+  - Spontaneous adventures are my favorite way to have fun.
+  - I’d rather blend in than stand out in a group.
+  - I’m always excited to try exotic and unusual foods.
+  - I enjoy following and discussing pop culture, TV shows, and movies.
+  - I enjoy taking spontaneous trips, even if it means postponing responsibilities.
+  - I believe gossiping about others is harmless fun.
+
+🔹 Lopsided Questions:
+  - I prefer a small, close-knit group of friends over a large social circle. - 10: 45.38%
+  - I have strong religious or spiritual beliefs. - 1: 40.34%
+
+🔹 Polarized Questions2:
+  - I prefer a small, close-knit group of friends over a large social circle. - 10, 9: 69.75%
+  - I value deep, meaningful conversations over casual small talk. - 10, 9: 53.78%
+  - I’m comfortable with my friends having different opinions and beliefs. - 10, 9: 55.46%
+  - I have strong religious or spiritual beliefs. - 1, 2: 52.10%
+  - I enjoy discussing deep topics like philosophy, science, or psychology. - 10, 8: 52.94%
+
+🔹 Polarized Questions3:
+  - Staying active and exercising is important to me. - 10, 7, 9: 57.98%
+  - I enjoy lazy days with no plans or responsibilities. - 10, 9, 8: 57.98%
+  - I like to indulge in non-essential purchases. - 1, 7, 2: 51.26%
+  - I prefer a small, close-knit group of friends over a large social circle. - 10, 9, 8: 81.51%
+  - I value deep, meaningful conversations over casual small talk. - 10, 9, 8: 67.23%
+  - I enjoy playful teasing and harmless pranks with my friends. - 10, 8, 9: 61.34%
+  - I often check in on my friends to see how they’re doing. - 8, 10, 7: 50.42%
+  - I’m comfortable with my friends having different opinions and beliefs. - 10, 9, 8: 68.91%
+  - I feel one should choose to buy from local businesses over large corporations. - 5, 8, 10: 54.62%
+  - I believe billionaires should not exist. - 1, 5, 10: 56.30%
+  - I have strong religious or spiritual beliefs. - 1, 2, 5: 62.18%
+  - I’m a night owl. - 10, 7, 9: 55.46%
+  - I’m uncomfortable with excessive physical affection (hugging, etc.). - 1, 3, 5: 50.42%
+  - I prefer cozy nights in over going out and socializing. - 10, 8, 7: 57.14%
+  - I enjoy discussing deep topics like philosophy, science, or psychology. - 10, 8, 9: 67.23%
+  - I like participating in group activities like sports, board games, or trivia. - 10, 8, 9: 52.10%
+  - I enjoy dark humor and sarcasm. - 10, 9, 8: 63.03%
+  - I could spend hours getting lost in a book or creative project. - 10, 7, 8: 60.50%
+  - Watching or playing sports is an important part of my identity. - 1, 10, 6: 51.26%
+  - I’m comfortable with my friends drinking alcohol. - 10, 7, 8: 54.62%
+  - I’m comfortable with my friends using recreational drugs. - 1, 2, 10: 59.66%
+
+🔹 Fence Sitters:
+  - I feel one should choose to buy from local businesses over large corporations.
+
+🔹 Bench Sitters:
+  - Staying active and exercising is important to me.
+  - Social activism and making a difference are important to me.
+  - I like participating in group activities like sports, board games, or trivia.
+  - My profession is a defining part of who I am.
+
+🔹 Low Variance:
+  - None found
+
+🔹 High Variance:
+  - I believe billionaires should not exist.
+  - I have strong religious or spiritual beliefs.
+  - I love going to concerts, festivals, or other live events with friends.
+  - Watching or playing sports is an important part of my identity.
+  - I’m comfortable with my friends smoking cigarettes.
+  - I’m comfortable with my friends using recreational drugs.
+
