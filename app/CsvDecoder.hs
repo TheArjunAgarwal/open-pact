@@ -34,17 +34,13 @@ parseCSV csvData =
 -------------------------------------------------------
 
 -- | Power used for exponentiation in the distance calculation.
---   If not a power of 2, calculations may be slow.
 powerOfExponentiation :: Int
 powerOfExponentiation = 2
 
 -- | Computes the Euclidean-like distance between two choice vectors.
 --   Assumes both lists are of the same length.
 dist :: [Int] -> [Int] -> Int
-dist [] [] = 0  -- Base case: distance between two empty lists is 0
-dist [] _ = error "Both lists must have the same length"
-dist _ [] = error "Both lists must have the same length"
-dist (x:xs) (y:ys) = (x - y) ^ powerOfExponentiation + dist xs ys
+dist = sum $ zipWith f xs ys where f x y = (x - y) ^ powerOfExponentiation
 
 -------------------------------------------------------
 -- Profile Processing & Matching
