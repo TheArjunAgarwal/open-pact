@@ -1,0 +1,285 @@
+Form Title: CMI Friendship Finder @ 2025
+
+
+Question 1:
+Type: CHECKBOX
+Title: I agree to take this form seriously and fill my answers thoughtfully and truthfully, upto my ability.
+
+See, this algorithm only works if your answers make sense. While one or many bad actors will not completely ruin it, why take the chance?
+
+If you find it funny to troll, we are in the same boat, but this is not the time and place for it. 
+Choices:
+- Yes
+
+
+Question 2:
+Type: PAGE_BREAK
+Title: Identifying Information
+
+
+Question 3:
+Type: TEXT
+Title: Name
+
+
+Question 4:
+Type: TEXT
+Title: CMI email address
+
+
+Question 5:
+Type: PAGE_BREAK
+Title: The Questions!
+
+
+Question 6:
+Type: SCALE
+Title: I pay close attention to my diet and nutrition.
+
+
+Question 7:
+Type: SCALE
+Title: Staying active and exercising is important to me.
+
+
+Question 8:
+Type: SCALE
+Title: I enjoy lazy days with no plans or responsibilities.
+
+
+Question 9:
+Type: SCALE
+Title: I prefer having a structured daily routine.
+
+
+Question 10:
+Type: SCALE
+Title: I like to indulge in non-essential purchases.
+
+
+Question 11:
+Type: SCALE
+Title: I enjoy treating myself, even if it’s impractical.
+
+
+Question 12:
+Type: SCALE
+Title: I am highly goal-oriented in my studies or career.
+
+
+Question 13:
+Type: SCALE
+Title: I like making long-term plans for my future.
+
+
+Question 14:
+Type: SCALE
+Title: I prioritize work-life balance over professional ambition.
+
+
+Question 15:
+Type: SCALE
+Title: Financial stability is more important to me than chasing passion projects.
+
+
+Question 16:
+Type: SCALE
+Title: I prefer a small, close-knit group of friends over a large social circle.
+
+
+Question 17:
+Type: SCALE
+Title: I enjoy social media and actively engage with it.
+
+
+Question 18:
+Type: SCALE
+Title: I love planning and hosting gatherings or parties.
+
+
+Question 19:
+Type: SCALE
+Title: I value deep, meaningful conversations over casual small talk.
+
+
+Question 20:
+Type: SCALE
+Title: I enjoy playful teasing and harmless pranks with my friends.
+
+
+Question 21:
+Type: SCALE
+Title: I like playing games that encourage sharing personal thoughts and feelings.
+
+
+Question 22:
+Type: SCALE
+Title: I often check in on my friends to see how they’re doing.
+
+
+Question 23:
+Type: SCALE
+Title: I’m comfortable with my friends having different opinions and beliefs.
+
+
+Question 24:
+Type: SCALE
+Title: Social activism and making a difference are important to me.
+
+
+Question 25:
+Type: SCALE
+Title: I feel one should choose to buy from local businesses over large corporations.
+
+
+Question 26:
+Type: SCALE
+Title: I believe billionaires should not exist.
+
+
+Question 27:
+Type: SCALE
+Title: I try to live sustainably and minimize my impact on the planet.
+
+
+Question 28:
+Type: SCALE
+Title: I believe everything will eventually be explained by science.
+
+
+Question 29:
+Type: SCALE
+Title: I have strong religious or spiritual beliefs.
+
+
+Question 30:
+Type: SCALE
+Title: I express what’s bothering me, even if it leads to uncomfortable conversations.
+
+
+Question 31:
+Type: SCALE
+Title: I’m a night owl.
+
+
+Question 32:
+Type: SCALE
+Title: I need friends who respond quickly to messages.
+
+
+Question 33:
+Type: SCALE
+Title: I’m uncomfortable with excessive physical affection (hugging, etc.).
+
+
+Question 34:
+Type: SCALE
+Title: I love celebrating birthdays and important milestones with friends.
+
+
+Question 35:
+Type: SCALE
+Title: Spontaneous adventures are my favorite way to have fun.
+
+
+Question 36:
+Type: SCALE
+Title: I prefer cozy nights in over going out and socializing.
+
+
+Question 37:
+Type: SCALE
+Title: I enjoy discussing deep topics like philosophy, science, or psychology.
+
+
+Question 38:
+Type: SCALE
+Title: I like participating in group activities like sports, board games, or trivia.
+
+
+Question 39:
+Type: SCALE
+Title: I enjoy dark humor and sarcasm.
+
+
+Question 40:
+Type: SCALE
+Title: I’d rather blend in than stand out in a group.
+
+
+Question 41:
+Type: SCALE
+Title: I’m always excited to try exotic and unusual foods.
+
+
+Question 42:
+Type: SCALE
+Title: I enjoy following and discussing pop culture, TV shows, and movies.
+
+
+Question 43:
+Type: SCALE
+Title: I love going to concerts, festivals, or other live events with friends.
+
+
+Question 44:
+Type: SCALE
+Title: I enjoy taking spontaneous trips, even if it means postponing responsibilities.
+
+
+Question 45:
+Type: SCALE
+Title: I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.
+
+
+Question 46:
+Type: SCALE
+Title: I could spend hours getting lost in a book or creative project.
+
+
+Question 47:
+Type: SCALE
+Title: Watching or playing sports is an important part of my identity.
+
+
+Question 48:
+Type: SCALE
+Title: My profession is a defining part of who I am.
+
+
+Question 49:
+Type: SCALE
+Title: Expressing myself through fashion or style is important to me.
+
+
+Question 50:
+Type: SCALE
+Title: I believe gossiping about others is harmless fun.
+
+
+Question 51:
+Type: SCALE
+Title: I’m comfortable with my friends drinking alcohol.
+
+
+Question 52:
+Type: SCALE
+Title: I’m comfortable with my friends smoking cigarettes.
+
+
+Question 53:
+Type: SCALE
+Title: I’m comfortable with my friends using recreational drugs.
+
+
+Question 54:
+Type: PAGE_BREAK
+Title: Some Formality
+
+
+Question 55:
+Type: CHECKBOX
+Title: I agree to receive my match through my CMI mail 
+Choices:
+- Yes
+
