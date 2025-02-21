@@ -1,68 +1,26 @@
 Strongly Correlated Question Pairs (Threshold ≥ 0.3 or ≤ -0.3)
 ============================================================
 
-I’m comfortable with my friends drinking alcohol. <-> I’m comfortable with my friends smoking cigarettes.: 0.62
-I’m comfortable with my friends smoking cigarettes. <-> I’m comfortable with my friends using recreational drugs.: 0.59
-I pay close attention to my diet and nutrition. <-> Staying active and exercising is important to me.: 0.57
-I love celebrating birthdays and important milestones with friends. <-> I love going to concerts, festivals, or other live events with friends.: 0.54
-I’m comfortable with my friends drinking alcohol. <-> I’m comfortable with my friends using recreational drugs.: 0.53
-I love going to concerts, festivals, or other live events with friends. <-> Expressing myself through fashion or style is important to me.: 0.53
-I am highly goal-oriented in my studies or career. <-> I like making long-term plans for my future.: 0.52
-Spontaneous adventures are my favorite way to have fun. <-> I enjoy taking spontaneous trips, even if it means postponing responsibilities.: 0.51
-I love planning and hosting gatherings or parties. <-> I love celebrating birthdays and important milestones with friends.: 0.49
-I enjoy following and discussing pop culture, TV shows, and movies. <-> I love going to concerts, festivals, or other live events with friends.: 0.49
-I love going to concerts, festivals, or other live events with friends. <-> I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.: 0.48
-I like playing games that encourage sharing personal thoughts and feelings. <-> I’m always excited to try exotic and unusual foods.: 0.47
-Spontaneous adventures are my favorite way to have fun. <-> I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.: 0.45
-I am highly goal-oriented in my studies or career. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.42
-I believe billionaires should not exist. <-> I have strong religious or spiritual beliefs.: -0.42
-I prefer having a structured daily routine. <-> I am highly goal-oriented in my studies or career.: 0.42
+I’m comfortable with my friends drinking alcohol. <-> I’m comfortable with my friends smoking cigarettes.: 0.55
+I’m comfortable with my friends drinking alcohol. <-> I’m comfortable with my friends using recreational drugs.: 0.48
+I’m comfortable with my friends smoking cigarettes. <-> I’m comfortable with my friends using recreational drugs.: 0.46
+I pay close attention to my diet and nutrition. <-> Staying active and exercising is important to me.: 0.46
+I love celebrating birthdays and important milestones with friends. <-> I love going to concerts, festivals, or other live events with friends.: 0.45
+I love going to concerts, festivals, or other live events with friends. <-> Expressing myself through fashion or style is important to me.: 0.45
+I am highly goal-oriented in my studies or career. <-> I like making long-term plans for my future.: 0.43
 I value deep, meaningful conversations over casual small talk. <-> I enjoy discussing deep topics like philosophy, science, or psychology.: 0.42
-I like playing games that encourage sharing personal thoughts and feelings. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.42
-I enjoy following and discussing pop culture, TV shows, and movies. <-> Expressing myself through fashion or style is important to me.: 0.42
-I love celebrating birthdays and important milestones with friends. <-> Expressing myself through fashion or style is important to me.: 0.41
-I love planning and hosting gatherings or parties. <-> I love going to concerts, festivals, or other live events with friends.: 0.41
-I like participating in group activities like sports, board games, or trivia. <-> Watching or playing sports is an important part of my identity.: 0.39
-I’m uncomfortable with excessive physical affection (hugging, etc.). <-> I love celebrating birthdays and important milestones with friends.: -0.39
-I love celebrating birthdays and important milestones with friends. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.38
-I love going to concerts, festivals, or other live events with friends. <-> I’m comfortable with my friends drinking alcohol.: 0.37
-I pay close attention to my diet and nutrition. <-> I prefer having a structured daily routine.: 0.37
-I prefer having a structured daily routine. <-> I’m a night owl.: -0.37
-Staying active and exercising is important to me. <-> Watching or playing sports is an important part of my identity.: 0.37
-I am highly goal-oriented in my studies or career. <-> My profession is a defining part of who I am.: 0.37
-I like to indulge in non-essential purchases. <-> Expressing myself through fashion or style is important to me.: 0.37
-I like to indulge in non-essential purchases. <-> I love planning and hosting gatherings or parties.: 0.37
-I like to indulge in non-essential purchases. <-> I enjoy treating myself, even if it’s impractical.: 0.36
-I love planning and hosting gatherings or parties. <-> Expressing myself through fashion or style is important to me.: 0.36
-I love planning and hosting gatherings or parties. <-> I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.: 0.35
-I’m always excited to try exotic and unusual foods. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.35
-I’m comfortable with my friends having different opinions and beliefs. <-> I like participating in group activities like sports, board games, or trivia.: 0.35
-I enjoy treating myself, even if it’s impractical. <-> I enjoy taking spontaneous trips, even if it means postponing responsibilities.: 0.35
-Expressing myself through fashion or style is important to me. <-> I’m comfortable with my friends drinking alcohol.: 0.34
-I am highly goal-oriented in my studies or career. <-> I believe billionaires should not exist.: -0.34
-Financial stability is more important to me than chasing passion projects. <-> I could spend hours getting lost in a book or creative project.: -0.33
-I enjoy social media and actively engage with it. <-> Social activism and making a difference are important to me.: 0.33
-Social activism and making a difference are important to me. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.33
-I often check in on my friends to see how they’re doing. <-> I love going to concerts, festivals, or other live events with friends.: 0.33
-I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting. <-> Expressing myself through fashion or style is important to me.: 0.33
-I am highly goal-oriented in my studies or career. <-> I love celebrating birthdays and important milestones with friends.: 0.33
-I’m a night owl. <-> I enjoy dark humor and sarcasm.: 0.33
-Spontaneous adventures are my favorite way to have fun. <-> I love going to concerts, festivals, or other live events with friends.: 0.33
-I feel one should choose to buy from local businesses over large corporations. <-> I believe billionaires should not exist.: 0.33
-I pay close attention to my diet and nutrition. <-> I enjoy lazy days with no plans or responsibilities.: -0.33
-I love going to concerts, festivals, or other live events with friends. <-> Watching or playing sports is an important part of my identity.: 0.33
-I enjoy lazy days with no plans or responsibilities. <-> I’m a night owl.: 0.32
-I prefer having a structured daily routine. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.32
-I love planning and hosting gatherings or parties. <-> I’m comfortable with my friends drinking alcohol.: 0.32
-I enjoy dark humor and sarcasm. <-> I’m always excited to try exotic and unusual foods.: 0.32
-I love planning and hosting gatherings or parties. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.32
-Staying active and exercising is important to me. <-> I believe billionaires should not exist.: -0.32
-I’m uncomfortable with excessive physical affection (hugging, etc.). <-> I love going to concerts, festivals, or other live events with friends.: -0.32
-Staying active and exercising is important to me. <-> I enjoy lazy days with no plans or responsibilities.: -0.32
-I like to indulge in non-essential purchases. <-> I love celebrating birthdays and important milestones with friends.: 0.32
-I enjoy treating myself, even if it’s impractical. <-> I believe everything will eventually be explained by science.: 0.32
-I love planning and hosting gatherings or parties. <-> I often check in on my friends to see how they’re doing.: 0.31
-I often check in on my friends to see how they’re doing. <-> I love celebrating birthdays and important milestones with friends.: 0.31
-I could spend hours getting lost in a book or creative project. <-> My profession is a defining part of who I am.: 0.31
-Expressing myself through fashion or style is important to me. <-> I’m comfortable with my friends smoking cigarettes.: 0.31
-I enjoy playful teasing and harmless pranks with my friends. <-> I enjoy dark humor and sarcasm.: 0.30
+Spontaneous adventures are my favorite way to have fun. <-> I enjoy taking spontaneous trips, even if it means postponing responsibilities.: 0.42
+I love planning and hosting gatherings or parties. <-> I love celebrating birthdays and important milestones with friends.: 0.40
+I love going to concerts, festivals, or other live events with friends. <-> I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.: 0.39
+Spontaneous adventures are my favorite way to have fun. <-> I find thrill-seeking activities (e.g., skydiving, roller coasters) exciting.: 0.38
+I enjoy following and discussing pop culture, TV shows, and movies. <-> I love going to concerts, festivals, or other live events with friends.: 0.36
+I believe billionaires should not exist. <-> I have strong religious or spiritual beliefs.: -0.35
+I like playing games that encourage sharing personal thoughts and feelings. <-> I’m always excited to try exotic and unusual foods.: 0.35
+I love celebrating birthdays and important milestones with friends. <-> Expressing myself through fashion or style is important to me.: 0.33
+I enjoy following and discussing pop culture, TV shows, and movies. <-> Expressing myself through fashion or style is important to me.: 0.33
+I like participating in group activities like sports, board games, or trivia. <-> Watching or playing sports is an important part of my identity.: 0.33
+I am highly goal-oriented in my studies or career. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.32
+I love planning and hosting gatherings or parties. <-> I love going to concerts, festivals, or other live events with friends.: 0.32
+I’m a night owl. <-> I enjoy dark humor and sarcasm.: 0.32
+I like playing games that encourage sharing personal thoughts and feelings. <-> I enjoy following and discussing pop culture, TV shows, and movies.: 0.30
+I prefer having a structured daily routine. <-> I am highly goal-oriented in my studies or career.: 0.30
