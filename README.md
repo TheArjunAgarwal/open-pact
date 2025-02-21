@@ -39,16 +39,16 @@ galeSharply/
 │── rosettatest.hs     # Test implementation of algorithms from Rosetta Code
 
 misc/
-│── Marraige-Pact.prof         # Profiling results
-│── Marraige-Pact.cabal        # Cabal package configuration
+│── Marraige-Pact.prof                  # Profiling results
+│── Marraige-Pact.cabal                 # Cabal package configuration
 │── Marraige-Pact with score.on.prof    # Profiling with scoring
 │── Marraige-Pact without score.prof    # Profiling without scoring
-│── cabal.project.local        # Local Cabal configuration
-│── test.csv                   # Sample response dataset
-│── form-questions.txt # Questions asked on the google form
-│── testcaseMaker.py            # Script to generate test cases
-│── LICENSE                     # License file
-│── CHANGELOG.md                # Changelog for project updates
+│── cabal.project.local                 # Local Cabal configuration
+│── test.csv                            # Sample response dataset
+│── form-questions.txt                  # Questions asked on the google form
+│── testcaseMaker.py                    # Script to generate test cases
+│── LICENSE                             # License file
+│── CHANGELOG.md                        # Changelog for project updates
 ```
 
 ---
