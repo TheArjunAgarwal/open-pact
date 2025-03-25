@@ -40,7 +40,7 @@ powerOfExponentiation = 2
 -- | Computes the Euclidean-like distance between two choice vectors.
 --   Assumes both lists are of the same length.
 dist :: [Int] -> [Int] -> Int
-dist = sum $ zipWith f xs ys where f x y = (x - y) ^ powerOfExponentiation
+dist xs ys = sum $ zipWith f xs ys where f x y = (x - y) ^ powerOfExponentiation
 
 -------------------------------------------------------
 -- Profile Processing & Matching
@@ -127,7 +127,7 @@ jaccard a b = norm mins / norm maxs
 
 -- | Jaccard-based distance metric
 jaccardDist :: [Int] -> [Int] -> Int
-jaccardDist a b = floor (1000 * (1 - weightedJaccard a b))
+jaccardDist a b = floor (1000 * (1 - jaccard a b))
 
 -- | Yet another Jaccard-based idea: similarity score
 metric :: [Int] -> [Int] -> Double
