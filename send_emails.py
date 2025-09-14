@@ -39,29 +39,12 @@ def main():
     
     Expects a CSV file with columns: @name, @mail, @match, @matchmail.
     """
-    sender_email = "your_email@gmail.com"  # Replace with actual email
-    sender_password = "your_secure_app_password"  # Use environment variables or secure storage
-    csv_file = "matches.csv"  # Path to the CSV file
+    sender_email = "anulick0@gmail.com"  # Replace with actual email
+    sender_password = "temubqmlnyuyxxci"  # Use environment variables or secure storage
+    csv_file = "/Users/deepthought/Desktop/Marraige Pact/open-pact/preMatches.csv"  # Path to the CSV file
 
     # Email subject
-    subject = "You've Been Matched!"
-
-    # Leaderboard (static text for top matches)
-    leaderboard = """\n\nPS: The best matches leaderboard is:
-    
-1. A + N
-2. TC + WS
-3. AD + L
-4. ADD + DM
-5. AC + G
-6. S + S
-7. AG + SR
-8. D + S
-9. BP + NC
-10. AB + H
-
-And if we run the algorithm in reverse, the worst match is NS + S.
-"""
+    subject = " Quick Followup on Your Friendship Finder Match"
 
     # Open the CSV file and read each row
     try:
@@ -77,21 +60,26 @@ And if we run the algorithm in reverse, the worst match is NS + S.
                 body = f"""
 Hi {name},
 
-Great news! Based on your responses, we’ve found a friendship match for you. Say hello to {match}!
+A few months ago, I matched you with {match}({match_email}) as part of our friendship matching experiment. I hope you had a chance to connect and maybe even found a meaningful interaction!
 
-📩 Email: {match_email}
+As promised, I’m reaching out with a quick followup. I’d love to hear how things went:
 
-I encourage you to reach out, introduce yourself, and give it a shot—regardless of any prior experiences with this person. You never know what a fresh start could bring!
+- Did you end up reaching out to {match}? Did you two know each other before hand? Did you have a conversation or meet up?
 
-Additionally, if you’d like, I can provide information about other people similar to you within the next 24 hours. This data will be completely wiped at 11:59 AM on February 9.
+- What was your overall expirence with this person? Do you feel they are a good friend, say on a scale of 1-10.
 
-Just let me know if you’re interested.
+- How did it go overall?
 
-I may also send a single follow-up in about three months to see how things are going. No pressure—just curious to hear how it worked out! Best of luck, and happy connecting!
+- Any suggestions for how we could improve the matching process?
 
-Warm Regards,
+Your feedback, positive or constructive, would mean a lot and will help shape future experiments like this. Just hit "Reply" and share a few thoughts if you’re up for it. No pressure at all.
+
+Thanks so much for being part of this!
+
+Warm regards,
 Arjun Maneesh Agarwal
-{leaderboard}
+
+PS: A few people recived two mails from me as I hit the run command by chance. I am really sorry.
 """
                 # Send the email
                 send_email(email, subject, body, sender_email, sender_password)
