@@ -49,6 +49,34 @@ misc/
 │── testcaseMaker.py                    # Script to generate test cases
 │── LICENSE                             # License file
 │── CHANGELOG.md                        # Changelog for project updates
+
+
+app/
+    ├── CsvDecoder.hs              # Parses CSV data into Haskell data types
+    ├── CsvMaker.hs                # Generates match output in CSV format
+    ├── Irving.hs                  # Irving's Stable Roommates Algorithm for matchmaking
+    └── Main.hs                    # Main execution flow of OpenPact
+dataAnalysis/
+    ├── anomalies.py              # Detects statistical anomalies in response data
+    ├── correlation_heatmap.png   # Visualization of question correlations
+    ├── correlation.py            # Computes Pearson, Spearman, Kendall correlations
+    ├── data.csv                  # Annonymized Data
+    ├── kendall_correlation.csv   # Kendall correlation matrix
+    ├── pearson_correlation.csv   # Pearson correlation matrix
+    ├── spearman_correlation.csv  # Spearman correation matrix
+    ├── statistical_anomalies.txt # List of questions with unusual response patterns
+    └── strong_correlations.txt   # Questions with strong correlations
+.gitignore                        # gitignore for project files
+CHANGELOG.md                      # Changelog for project updates
+form-questions.txt                # Questions asked on the google form
+gsaAndScore.hs                    # Additional scoring and matching logic for romantic mathes(yet to add support csv)
+LICENSE                           # License file
+Marraige-Pact.cabal               # Cabal package configuration
+README.md                         # YOU ARE HERE!
+rosettatest.hs                    # Some test cases from Rosetta Code
+send_emails.py                    # Sends match results via email
+test.csv                          # A huge csv file to test stuff out
+testcaseMaker.py                  # The python file which made the test csv.
 ```
 
 ---
