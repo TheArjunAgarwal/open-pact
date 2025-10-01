@@ -142,3 +142,62 @@ metric (x:xs) (y:ys)
 -- | Converts metric to a distance measure
 metricDist :: [Int] -> [Int] -> Int
 metricDist l1 l2 = floor (1000 * (50 - metric l1 l2))
+
+-- | Calculates the Pearson correlation coefficient between two integer vectors.
+--   This measures the linear relationship between two datasets.
+--   A value of +1 is total positive linear correlation, 0 is no linear correlation,
+--   and -1 is total negative linear correlation.
+pearsonCorrelation :: [Int] -> [Int] -> Float
+pearsonCorrelation xs ys = 
+    let
+      -- Calculate the mean (average) of each vector.
+      xDash = fromIntegral (sum xs) / fromIntegral (length xs)
+      yDash = fromIntegral (sum ys) / fromIntegral (length ys)
+      
+      -- Calculate the deviation of each element from its mean.
+      xsDash = map (\x -> fromIntegral x - xDash) xs
+      ysDash = map (\y -> fromIntegral y - yDash) ys
+      
+      -- Numerator: Covariance, the sum of the product of deviations.
+      numerator = sum (zipWith (*) xsDash ysDash)
+      
+      -- Denominators: Related to the standard deviation of each vector.
+      denominatorX = sum (map (^ 2) xsDash)
+      denominatorY = sum (map (^ 2) ysDash)
+      
+    in numerator / (sqrt denominatorX * sqrt denominatorY)
+
+-- | The desired output range for the Pearson distance, defining the scale.
+pearsonOutputRange :: Int
+pearsonOutputRange = 100000000
+
+-- | Converts the Pearson correlation coefficient (a similarity measure from -1.0 to 1.0)
+--   into an integer distance score. A higher correlation results in a lower distance.
+pearsonDistance :: [Int] -> [Int] -> Int
+pearsonDistance xs ys = - round (pearsonCorrelation xs ys * r + r) 
+  where r = fromIntegral (pearsonOutputRange `div` 2)
+
+
+-- | The expected maximum value for a single response, used for scaling.
+meanDistInputRange :: Int
+meanDistInputRange = 10
+
+-- | The target output range for the final scaled distance.
+meanDistOutputRange :: Int
+meanDistOutputRange = 1000000
+
+-- | Computes a distance based on the Mean Absolute Difference (MAD).
+--   It first calculates the average absolute difference between vector elements.
+--   This value is then transformed into a similarity score, scaled to a larger
+--   output range, and inverted to function as a final distance metric.
+meanAbsoluteDifferenceDist :: [Int] -> [Int] -> Int
+meanAbsoluteDifferenceDist xs ys = - round (similarityScore * ratio) where
+    -- Calculate the average of the absolute differences between corresponding elements.
+    meanAbsDiff = fromIntegral (sum (zipWith (\x y -> abs (x-y)) xs ys)) / fromIntegral (length xs) :: Double
+    
+    -- Convert the distance (meanAbsDiff) into a similarity score.
+    -- A smaller difference results in a higher similarity score.
+    similarityScore = fromIntegral meanDistInputRange - meanAbsDiff
+    
+    -- Define the scaling factor to map the similarity score to the desired output range.
+    ratio = fromIntegral meanDistOutputRange / fromIntegral meanDistInputRange
