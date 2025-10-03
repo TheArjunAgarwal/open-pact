@@ -33,15 +33,10 @@ parseCSV csvData =
 -- Distance Metrics for Matching Algorithm
 -------------------------------------------------------
 
--- | Power used for exponentiation in the distance calculation.
-powerOfExponentiation :: Int
-powerOfExponentiation = 2
-
 -- | Computes the Euclidean-like distance between two choice vectors.
 --   Assumes both lists are of the same length.
 dist :: [Int] -> [Int] -> Int
-dist xs ys = sum $ zipWith f xs ys where f x y = (x - y) ^ powerOfExponentiation
-
+dist = meanAbsoluteDifferenceDist
 -------------------------------------------------------
 -- Profile Processing & Matching
 -------------------------------------------------------
@@ -92,11 +87,20 @@ preferenceListWithScores x =
         dedupedMap = M.fromListWith max [(normalizeKey (a, b), score) | (a, b, score) <- flattened]
 
         -- Convert the map back to a sorted list (descending order by match score)
-    in sortOn (negate . thd) [(a, b, c) | ((a, b), c) <- M.toList dedupedMap]
+    in sortOn thd [(a, b, c) | ((a, b), c) <- M.toList dedupedMap]
 
 -------------------------------------------------------
 -- Additional Distance Functions
 -------------------------------------------------------
+
+-- | Computes the Euclidean-like distance between two choice vectors.
+-- | Power used for exponentiation in the distance calculation.
+powerOfExponentiation :: Int
+powerOfExponentiation = 2
+
+--   Assumes both lists are of the same length.
+euclideanDist :: [Int] -> [Int] -> Int
+euclideanDist xs ys = sum $ zipWith f xs ys where f x y = (x - y) ^ powerOfExponentiation
 
 -- | Hinge Distance (dot product similarity)
 hingeDist :: [Int] -> [Int] -> Int
