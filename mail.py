@@ -2,11 +2,6 @@ import smtplib
 import csv
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import dotenv
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 def send_email(to_email, subject, body, sender_email, sender_password):
     """
@@ -44,22 +39,22 @@ def main():
     
     Expects a CSV file with columns: @name, @mail, @match, @matchmail.
     """
-    sender_email = os.environ['email']
-    sender_password = os.environ['password']
-    csv_file = "/Users/deepthought/Desktop/Marraige Pact/open-pact/preMatches.csv"  # Path to the CSV file
+    sender_email = "anulick0@gmail.com"
+    sender_password = "vwnc iwxe ovwn jwin"
+    csv_file = "matches.csv"  # Path to the CSV file
 
     # Email subject
-    subject = " Quick Followup on Your Friendship Finder Match"
+    subject = "Quick Followup on Your Friendship Finder Match"
 
     # Open the CSV file and read each row
     try:
         with open(csv_file, newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                name = row['@name']
-                email = row['@mail']
-                match = row['@match']
-                match_email = row['@matchmail']
+                name = row['name']
+                email = row['mail']
+                match = row['match']
+                match_email = row['matchmail']
 
                 # Email body with personalized match details
                 body = f"""
@@ -71,7 +66,7 @@ As promised, I’m reaching out with a quick followup. I’d love to hear how th
 
 - Did you end up reaching out to {match}? Did you two know each other before hand? Did you have a conversation or meet up?
 
-- What was your overall expirence with this person? Do you feel they are a good friend, say on a scale of 1-10.
+- What was your overall experience with this person? Do you feel they are a good friend, say on a scale of 1-10.
 
 - How did it go overall?
 
@@ -83,8 +78,6 @@ Thanks so much for being part of this!
 
 Warm regards,
 Arjun Maneesh Agarwal
-
-PS: A few people recived two mails from me as I hit the run command by chance. I am really sorry.
 """
                 # Send the email
                 send_email(email, subject, body, sender_email, sender_password)

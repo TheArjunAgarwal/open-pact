@@ -37,10 +37,10 @@ def find_even_distributions(df, threshold=0.15):
     """
     even_questions = []
     for col in df.columns:
-        counts = df[col].value_counts(
-            normalize=True)  # Get percentage distribution
-        if max(counts) - min(
-                counts) < threshold:  # Check if spread is fairly uniform
+        counts = df[col].value_counts(normalize=True)  # Get percentage distribution
+        if len(counts) == 0:
+            continue
+        if max(counts) - min(counts) < threshold:  # Check if spread is fairly uniform
             even_questions.append(col)
     return even_questions
 
@@ -185,7 +185,7 @@ def find_bench_sitters(df, middle_range=(6, 8), min_share=0.4):
 
 
 # Identify low-variance questions (everyone answers similarly)
-def find_low_variance(df, threshold=3.0):
+def find_low_variance(df, threshold=5.0):
     """
     Finds questions where responses have very low variance (little variation).
 
@@ -196,7 +196,7 @@ def find_low_variance(df, threshold=3.0):
     Returns:
     - List of questions with low variance
     """
-    return [col for col in df.columns if df[col].var() < threshold]
+    return [f"{col}, {df[col].var()}" for col in df.columns if df[col].var() < threshold]
 
 
 # Identify high-variance questions (responses are all over the place)
@@ -211,7 +211,7 @@ def find_high_variance(df, threshold=10.0):
     Returns:
     - List of questions with high variance
     """
-    return [col for col in df.columns if df[col].var() > threshold]
+    return [f"{col}, {df[col].var()}" for col in df.columns if df[col].var() > threshold]
 
 
 # Save results to a text file
@@ -242,7 +242,7 @@ def save_anomalies(filename, **kwargs):
 
 # Main function
 def main():
-    filename = "test.csv"  # Change to your actual file
+    filename = "dataAnalysis/statdata.csv"  # Change to your actual file
     df = load_data(filename)
 
     # Find anomalies
@@ -256,7 +256,7 @@ def main():
     high_variance = find_high_variance(df)
 
     # Save results
-    save_anomalies("statistical_anomalies.txt",
+    save_anomalies("dataAnalysis/statistical_anomalies.txt",
                    even_distributions=even_distributions,
                    lopsided_questions=lopsided_questions,
                    polarized_questions2=polarized_questions_2,

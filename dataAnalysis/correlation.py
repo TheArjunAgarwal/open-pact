@@ -1,115 +1,142 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy.stats import kendalltau
 
+# -----------------------------
 # Load and clean data
+# -----------------------------
 def load_data(filename, delimiter=","):
     """
     Reads the dataset from a file, ensuring proper conversion to numeric values.
-
-    Parameters:
-    - filename (str): Path to the file
-    - delimiter (str): Character used to separate values in the file (default: comma)
-
-    Returns:
-    - DataFrame: Pandas DataFrame containing numerical responses with column labels
     """
     df = pd.read_csv(filename, delimiter=delimiter, header=0)
-
-    # Convert all responses to numeric, forcing errors to NaN if conversion fails
     df = df.apply(pd.to_numeric, errors='coerce')
-
     return df
 
-# Compute correlation matrix
-def compute_correlations(df, method="pearson"):
-    """
-    Computes correlation between questions.
 
-    Parameters:
-    - df (DataFrame): Pandas DataFrame containing question responses
-    - method (str): Correlation method ("pearson", "spearman", "kendall")
+# -----------------------------
+# Compute Kendall correlations and significance
+# -----------------------------
+def compute_kendall_significance(df):
+    """
+    Computes Kendall's tau correlation and significance (p-values) for all question pairs.
 
     Returns:
-    - DataFrame: Correlation matrix
+    - corr_df: DataFrame of Kendall's tau values
+    - pval_df: DataFrame of corresponding p-values
+    - results_list: List of tuples (q1, q2, tau, p)
     """
-    return df.corr(method=method)
+    cols = df.columns
+    n = len(cols)
+    corr_matrix = pd.DataFrame(index=cols, columns=cols, dtype=float)
+    pval_matrix = pd.DataFrame(index=cols, columns=cols, dtype=float)
+    results = []
 
-# Filter strong correlations
-def filter_strong_correlations(corr_matrix, threshold=0.3):
+    for i in range(n):
+        for j in range(i, n):
+            x = df[cols[i]]
+            y = df[cols[j]]
+            valid = x.notna() & y.notna()
+
+            if valid.sum() > 2:
+                tau, p = kendalltau(x[valid], y[valid], nan_policy="omit")
+            else:
+                tau, p = (float('nan'), float('nan'))
+
+            corr_matrix.iloc[i, j] = corr_matrix.iloc[j, i] = tau
+            pval_matrix.iloc[i, j] = pval_matrix.iloc[j, i] = p
+
+            if i != j:
+                results.append((cols[i], cols[j], tau, p))
+
+    return corr_matrix, pval_matrix, results
+
+
+# -----------------------------
+# Filter strong and significant correlations
+# -----------------------------
+def filter_significant_correlations(results, corr_threshold=0.3, alpha=0.05):
     """
-    Filters and extracts strongly correlated pairs (above threshold or below -threshold).
-
-    Parameters:
-    - corr_matrix (DataFrame): Correlation matrix
-    - threshold (float): Absolute value threshold for strong correlations
-
-    Returns:
-    - List of tuples containing strong correlations
+    Filters correlation results by strength and statistical significance.
     """
-    strong_pairs = []
-    for i in range(len(corr_matrix.columns)):
-        for j in range(i + 1, len(corr_matrix.columns)):  # Avoid duplicate pairs
-            if abs(corr_matrix.iloc[i, j]) >= threshold:
-                strong_pairs.append((corr_matrix.index[i], corr_matrix.columns[j], corr_matrix.iloc[i, j]))
+    filtered = [
+        (q1, q2, tau, p)
+        for q1, q2, tau, p in results
+        if abs(tau) >= corr_threshold and p < alpha
+    ]
+    return filtered
 
-    return strong_pairs
 
-# Save strong correlations to a text file
-def save_strong_correlations(strong_pairs, filename="strong_correlations.txt"):
+# -----------------------------
+# Save correlation results
+# -----------------------------
+def save_correlation_results(results, filename="dataAnalysis/significant_correlations.txt"):
     """
-    Saves strongly correlated question pairs into a text file.
-
-    Parameters:
-    - strong_pairs (list of tuples): List of (question1, question2, correlation)
-    - filename (str): Output file name
+    Saves significant Kendall correlations to a text file, formatting small p-values clearly.
     """
     with open(filename, "w") as f:
-        f.write("Strongly Correlated Question Pairs (Threshold ≥ 0.3 or ≤ -0.3)\n")
-        f.write("=" * 60 + "\n\n")
-        for q1, q2, corr in sorted(strong_pairs, key=lambda x: -abs(x[2])):  # Sort by absolute correlation value
-            f.write(f"{q1} <-> {q2}: {corr:.2f}\n")
+        f.write("Significant Kendall Correlations (|τ| ≥ 0.3, p < 0.05)\n")
+        f.write("=" * 70 + "\n\n")
+        for q1, q2, tau, p in sorted(results, key=lambda x: -abs(x[2])):
+            # Nicely format p-values
+            if pd.isna(p):
+                p_str = "NaN"
+            elif p < 0.0001:
+                p_str = "<0.0001"
+            elif p < 0.001:
+                p_str = f"{p:.2e}"
+            else:
+                p_str = f"{p:.4f}"
+            f.write(f"{q1} <-> {q2}: τ = {tau:.3f}, p = {p_str}\n")
+    print(f"Saved {len(results)} significant correlations to {filename}")
 
-# Plot correlation heatmap
-def plot_heatmap(corr_matrix, title="Correlation Matrix"):
+
+# -----------------------------
+# Plot correlation heatmap (masking non-significant cells)
+# -----------------------------
+def plot_heatmap(corr_matrix, pval_matrix=None, title="Kendall Correlation Matrix", alpha=0.05):
     """
-    Plots a heatmap of the correlation matrix.
-
-    Parameters:
-    - corr_matrix (DataFrame): Correlation matrix
-    - title (str): Title of the heatmap
+    Plots a heatmap of Kendall's correlations.
+    Optionally masks non-significant cells.
     """
     plt.figure(figsize=(12, 8))
-    sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
+    if pval_matrix is not None:
+        mask = pval_matrix >= alpha  # mask non-significant cells
+        sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5, mask=mask)
+    else:
+        sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
     plt.title(title)
+    plt.tight_layout()
     plt.show()
 
+
+# -----------------------------
 # Main function
+# -----------------------------
 def main():
-    filename = "test.csv"  # Change to your actual file name
+    filename = "dataAnalysis/statdata.csv"  # Adjust as needed
     df = load_data(filename)
 
-    # Compute different correlation types
-    pearson_corr = compute_correlations(df, method="pearson")
-    spearman_corr = compute_correlations(df, method="spearman")
-    kendall_corr = compute_correlations(df, method="kendall")
+    # Compute Kendall correlations + significance
+    kendall_corr, kendall_pval, kendall_results = compute_kendall_significance(df)
 
-    # Save full correlation matrices
-    pearson_corr.to_csv("pearson_correlation.csv")
-    spearman_corr.to_csv("spearman_correlation.csv")
-    kendall_corr.to_csv("kendall_correlation.csv")
+    # Save full correlation and p-value matrices
+    kendall_corr.to_csv("dataAnalysis/kendall_correlation.csv")
+    kendall_pval.to_csv("dataAnalysis/kendall_pvalues.csv")
 
-    # Filter strong correlations
-    strong_pairs = filter_strong_correlations(kendall_corr, threshold=0.3)
+    # Filter significant & strong pairs
+    significant_pairs = filter_significant_correlations(kendall_results, corr_threshold=0.3, alpha=0.05)
 
-    # Save strong correlations to a text file
-    save_strong_correlations(strong_pairs, "strong_correlations.txt")
+    # Save formatted results
+    save_correlation_results(significant_pairs, "dataAnalysis/significant_kendall_correlations.txt")
 
-    # Plot correlation heatmap
-    plot_heatmap(kendall_corr, "Kendell Correlation Matrix")
+    # # Plot heatmap of significant Kendall correlations
+    # plot_heatmap(kendall_corr, kendall_pval, "Kendall Correlation (Significant Only)")
 
-    print("Correlation matrices saved to CSV files.")
-    print(f"Strong correlations saved in 'strong_correlations.txt' ({len(strong_pairs)} pairs found).")
+    print("Kendall correlation analysis complete.")
+    print(f"{len(significant_pairs)} significant correlations found (|τ| ≥ 0.3, p < 0.05).")
+
 
 if __name__ == "__main__":
     main()
