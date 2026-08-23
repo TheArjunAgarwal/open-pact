@@ -18,7 +18,7 @@ data Profile = Profile {
 -- | Specifies how to decode a CSV row into a 'Profile' instance.
 instance FromRecord Profile where
     parseRecord v
-        | V.length v >= 50 = Profile <$> v .! 0 <*> v .! 1 <*> traverse (v .!) [2..49]
+        | V.length v >= 60 = Profile <$> v .! 0 <*> v .! 1 <*> traverse (v .!) [2..59]
         | otherwise = fail "Invalid CSV format: Expecting at least 50 columns"
 
 -- | Parses a CSV file into a vector of 'Profile' records.

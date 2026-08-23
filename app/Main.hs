@@ -39,7 +39,7 @@ main = do
 heart :: IO ()
 heart = do
     -- Read input CSV file containing participant preferences
-    csvData <- BL.readFile "realData.csv"  
+    csvData <- BL.readFile "matchdata.csv"  
 
     -- Parse the CSV file into a vector of 'Profile' records
     let profiles = parseCSV csvData    

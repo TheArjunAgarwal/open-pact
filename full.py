@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # --- Config ---
-FULldata = "fulldata.csv"
+FULLDATA = "fulldata.csv"
 MAINDATA = "maindata.csv"
 NAMES = "names.csv"
 MATCHDATA = "matchdata.csv"
@@ -13,38 +13,43 @@ STATDATA = os.path.join(DATAANALYSIS_DIR, "statdata.csv")
 
 os.makedirs(DATAANALYSIS_DIR, exist_ok=True)
 
-# --- Read fulldata.csv and plot first column ---
-print("Loading", FULldata)
-df = pd.read_csv(FULldata)
+# --- Read fulldata.csv ---
+print("Loading", FULLDATA)
+df = pd.read_csv(FULLDATA)
 
+# Convert numeric whole-number columns to integers.
+# Prevents values such as 5.0 from reaching the Haskell Int parser.
+for col in df.columns:
+    numeric = pd.to_numeric(df[col], errors="coerce")
+    non_empty = numeric.dropna()
+
+    if len(non_empty) > 0 and (non_empty % 1 == 0).all():
+        df[col] = numeric.astype("Int64")
+
+# --- Save first column ---
 df.iloc[:, [0]].to_csv("time.csv", index=False)
 print("Saved first column to time.csv")
-
 
 # --- Create maindata.csv by dropping first, second and last columns ---
 main_df = df.drop(df.columns[[0, 1, -1]], axis=1)
 main_df.to_csv(MAINDATA, index=False)
 print(f"Saved {MAINDATA}")
 
-# --- Save FIRST COLUMN of maindata.csv as names.csv (column values only) ---
-# IMPORTANT: we treat the first column of maindata.csv as the 'names' the user wants saved.
-# We'll save the *values* of that first column (not the header).
-first_col = main_df.iloc[:, 0]  # Select the first column
+# --- Save first column of maindata.csv as names.csv ---
+first_col = main_df.iloc[:, 0]
 first_col.to_csv(NAMES, index=False, header=False)
 print(f"Saved {NAMES} (first column from {MAINDATA} with no header)")
 
-
-# --- Create matchdata.csv: keep all rows exactly as in maindata.csv but remove the CSV header line ---
-# To do this, read maindata.csv normally and write it back with header=False.
-# This keeps every data row intact but does not write the column names line.
-maindata_reload = pd.read_csv(MAINDATA, header=0)  # read with header
-maindata_reload.to_csv(MATCHDATA, index=False, header=False)  # write without header
+# --- Create matchdata.csv without header ---
+# Use main_df directly so pandas does not re-infer the data types.
+main_df.to_csv(MATCHDATA, index=False, header=False)
 print(f"Saved {MATCHDATA} (no CSV header written — data rows preserved)")
 
-# --- Create statdata.csv: remove the first column but keep all rows, save to dataAnalysis/ ---
-stat_df = maindata_reload.drop(maindata_reload.columns[[0,1]], axis=1)
+# --- Create statdata.csv ---
+stat_df = main_df.drop(main_df.columns[[0, 1]], axis=1)
 stat_df.to_csv(STATDATA, index=False)
-print(f"Saved {STATDATA} (first column removed, all rows preserved)")
+print(f"Saved {STATDATA} (first two columns removed, all rows preserved)")
+
 
 # --- Optional verification (prints first few lines of files) ---
 # print("\n--- Verification preview ---")
