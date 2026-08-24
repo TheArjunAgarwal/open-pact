@@ -65,7 +65,7 @@ print(results.head(20).to_string(index=False))
 # Plot diverging bar chart
 # -----------------------------
 top = results.head(50)
-top = top[top["Difference"].abs() > 4]
+top = top[top["Difference"].abs() > 3]
 
 plt.figure(figsize=(12, 8))
 bars = plt.barh(top["Question"], top["Difference"], color=["#4CAF50" if d > 0 else "#F44336" for d in top["Difference"]])
